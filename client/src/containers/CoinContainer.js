@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PortfolioDisplay from "../components/portfolioDisplay";
+import PortfolioDisplay from "../components/PortfolioDisplay";
 
 const CoinContainer = () => {
     const [coins, setCoins] = useState(["BTC", "ETH"]);
