@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from "react";
-import PortfolioDisplay from "../components/PortfolioDisplay";
+import GlobalCurrencies from "../components/GlobalCurrencies";
 
 const CoinContainer = () => {
     const [coins, setCoins] = useState(["BTC", "ETH"]);
-    const [coinDataDaily, setCoinDataDaily] = useState([])
-    const [coinData5Min, setCoinData5Min] = useState([])
+    const [coinDataDaily, setCoinDataDaily] = useState([]);
+    const [coinData5Min, setCoinData5Min] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
-    const getCoinData5Min = () => {
+    const getCoinData = () => {
         console.log("Getting 5 min coin data");
-        const coinPromises = coins.map((coin) => {
-            return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`)
-            .then(response => response.json())})
-        Promise.all(coinPromises)
-        .then((combinedData) => {
-            setCoinData5Min(combinedData);
-            console.log(combinedData);
-        });
-
-    }
-
-    const getCoinDataDaily = () => {
-        console.log("Getting daily coin data");
+        // const coinPromises = coins.map((coin) => {
+        //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`)
+        //     .then(response => response.json())})
+        // Promise.all(coinPromises)
+        // .then((combinedData) => {
+        //     setCoinData5Min(combinedData);
+        // })
         const coinDailyPromises = coins.map((coin) => {
-            return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=CNY&apikey=7PU7J7PVOJFO2VDL`)
+            return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=CNY&apikey=1786JGDXIS069AHE`)
             .then(response => response.json())})
         Promise.all(coinDailyPromises)
         .then((combinedData) => {
-            setCoinDataDaily(combinedData);
             console.log(combinedData);
+            setCoinDataDaily(combinedData);
+            console.log(combinedData[0]["Meta Data"]["3. Digital Currency Name"]);
         })
+        .then(setLoaded(true));    
+
     }
 
     useEffect(()=> {
-        getCoinData5Min();
-        getCoinDataDaily();
+        getCoinData();
     }, [])
 
     return (
         <>
             <p>Here's the container</p>
-            <PortfolioDisplay />
+            <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/>
         </>
     )
 };
