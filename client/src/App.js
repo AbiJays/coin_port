@@ -1,9 +1,11 @@
 import './App.css';
+import CoinContainer from './containers/CoinContainer';
 
 function App() {
   return (
     <>
-    <p>Here's the client</p>
+    <h1>Here's the client</h1>
+    <CoinContainer />
     </>
   );
 }
