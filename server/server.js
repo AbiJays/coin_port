@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();  
+const createRouter = require('./helper/createRouter.js');
 
 const cors = require('cors');
 app.use(cors());
@@ -12,6 +13,8 @@ MongoClient.connect('mongodb://localhost:27017')
     .then((client) => {
         const db = client.db('coinPortfolio');
         const transactions = db.collection('transactions');
+        const transactionRouter = createRouter(transactions);
+        app.use('/api/transactions', transactionRouter);
     })
     .catch(console.err);
 
