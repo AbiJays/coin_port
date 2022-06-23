@@ -3,7 +3,6 @@ db.dropDatabase();
 
 db.transactions.insertMany([
 
-    [
         {
           "Coin": "BTC",
           "DateTime_Purchase": "14/02/2022 12:34:17",
@@ -347,6 +346,5 @@ db.transactions.insertMany([
           "Price_Purchase": 35,
           "Type": "BUY"
         }
-       ]
 
 ])
