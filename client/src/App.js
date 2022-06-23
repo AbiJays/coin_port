@@ -4,7 +4,7 @@ import CoinContainer from './containers/CoinContainer';
 function App() {
   return (
     <>
-    <h1>Here's the client</h1>
+    <p>Here's the client</p>
     <CoinContainer />
     </>
   );

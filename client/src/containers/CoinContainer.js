@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import PortfolioDisplay from "../components/portfolioDisplay";
 
 const CoinContainer = () => {
     const [coins, setCoins] = useState(["BTC", "ETH", , "XRP", "BCH", "ADA"]);
+=======
+
+const CoinContainer = () => {
+    const [coins, setCoins] = useState(["BTC", "ETH"]);
+>>>>>>> develop
     const [coinDataDaily, setCoinDataDaily] = useState([])
     const [coinData5Min, setCoinData5Min] = useState([])
 
