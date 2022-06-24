@@ -1,11 +1,11 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import LogIn from '../Pages/LogIn';
-import MyPortfolio from '../Pages/MyPortfolio';
-import CoinDetails from '../Pages/CoinDetails';
-import NewTransaction from '../Pages/NewTransaction';
-import GlobalCurrencies from '../Pages/GlobalCurrencies';
-import ErrorPage from '../Pages/ErrorPage';
+import LogIn from './Pages/LogIn';
+import MyPortfolio from './Pages/MyPortfolio';
+import CoinDetails from './Pages/CoinDetails';
+import NewTransaction from './Pages/NewTransaction';
+import GlobalCurrencies from './Pages/GlobalCurrencies';
+import ErrorPage from './Pages/ErrorPage';
 
 const CoinRouter = ({hello}) => {
   return (
