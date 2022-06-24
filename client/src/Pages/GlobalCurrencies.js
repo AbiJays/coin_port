@@ -1,9 +1,11 @@
-const GlobalCurrencies = ({coinDataDaily, loaded}) => {
+const GlobalCurrencies = ({coinDataDaily, loaded, hello}) => {
+
 
     return (
-        <div>
+        <>
             <p>Global page</p>
-        </div>
+            <p>{hello}</p>
+        </>
     )
             
     }

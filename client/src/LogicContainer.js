@@ -7,6 +7,7 @@ const LogicContainer = () => {
     const [coinDataDaily, setCoinDataDaily] = useState([]);
     const [coinData5Min, setCoinData5Min] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [hello, sethello] = useState("Hello there");
 
     const getCoinData = () => {
         console.log("Getting 5 min coin data");
@@ -41,11 +42,10 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter />
-            <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/>
+            <CoinRouter coinDataDaily={coinDataDaily} loaded={loaded} hello={hello}/>
+            {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
 };
 
 export default LogicContainer;
-
