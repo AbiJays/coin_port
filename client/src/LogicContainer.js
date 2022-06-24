@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import GlobalCurrencies from "./Pages/GlobalCurrencies";
+import GlobalCurrencies from "./components/Pages/GlobalCurrencies";
 import CoinRouter from "./components/Router";
 
 const LogicContainer = () => {
@@ -7,7 +7,7 @@ const LogicContainer = () => {
     const [coinDataDaily, setCoinDataDaily] = useState([]);
     const [coinData5Min, setCoinData5Min] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [hello, sethello] = useState("Hello there");
+    const [hello, sethello] = useState("Helloooooooo");
 
     const getCoinData = () => {
         console.log("Getting 5 min coin data");

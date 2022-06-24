@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
 const CoinDetails = () => {
-    const { slug }  = useParams()
+    const { snail }  = useParams()
     return ( 
         <>
-        <h1> Choice {slug} </h1>
-        <p>You're on page {slug}</p>
+        <h1> Choice {snail} </h1>
+        <p>You're on page {snail}</p>
         </>
      );
 }
