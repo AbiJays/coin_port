@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GlobalCurrencies from "./Pages/GlobalCurrencies";
+import CoinRouter from "./components/Router";
 
 const LogicContainer = () => {
     const [coins, setCoins] = useState(["BTC", "ETH"]);
@@ -40,7 +41,7 @@ const LogicContainer = () => {
 
     return (
         <>
-            <p>Here's the container</p>
+            <CoinRouter />
             <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/>
         </>
     )
