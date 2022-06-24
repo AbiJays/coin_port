@@ -14,7 +14,7 @@ const CoinRouter = ({hello}) => {
       <Routes>
         <Route exact path="/" element ={<LogIn />} />
         <Route path="/myportfolio" element={<MyPortfolio />} />
-        <Route path="/coin/:snail" element={<CoinDetails />} />
+        <Route path="/coin/:slug" element={<CoinDetails />} />
         <Route path="/newtransaction" element={<NewTransaction />} />
         <Route path="/global" element={<GlobalCurrencies  hello={hello} />} />
         <Route path="*" element={<ErrorPage />}/>
