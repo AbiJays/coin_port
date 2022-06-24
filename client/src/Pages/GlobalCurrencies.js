@@ -2,7 +2,7 @@ const GlobalCurrencies = ({coinDataDaily, loaded}) => {
 
     return (
         <div>
-            <p>stuff</p>
+            <p>Global page</p>
         </div>
     )
             

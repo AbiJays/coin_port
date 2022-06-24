@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import GlobalCurrencies from "../components/GlobalCurrencies";
+import GlobalCurrencies from "./Pages/GlobalCurrencies";
 
 const LogicContainer = () => {
     const [coins, setCoins] = useState(["BTC", "ETH"]);
