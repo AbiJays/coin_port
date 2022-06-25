@@ -1,10 +1,12 @@
-const MyPortfolio = () => {
+import PortfolioTotal from "./pageComponents/PortfolioTotal";
+import PortfolioCoins from "./pageComponents/PortfolioCoins";
+
+const MyPortfolio = ({coinDataDaily}) => {
     return (
         <>
-        <h1>
-            Look at all my beautiful Coins
-        </h1>
-        <a href="http://localhost:3000/coin/bitcoin">HERE</a>
+        <PortfolioTotal coinDataDaily={coinDataDaily}/>
+        <PortfolioCoins coinDataDaily={coinDataDaily}/>
+
         </> 
      );
 }
