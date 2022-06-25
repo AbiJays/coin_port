@@ -7,16 +7,16 @@ import NewTransaction from './Pages/NewTransaction';
 import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
 
-const CoinRouter = ({hello}) => {
+const CoinRouter = ({hello, coinDataDaily}) => {
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
       <Routes>
         <Route exact path="/" element ={<LogIn />} />
-        <Route path="/myportfolio" element={<MyPortfolio />} />
-        <Route path="/coin/:slug" element={<CoinDetails />} />
-        <Route path="/newtransaction" element={<NewTransaction />} />
-        <Route path="/global" element={<GlobalCurrencies  hello={hello} />} />
+        <Route path="/myportfolio" element={<MyPortfolio coinDataDaily={coinDataDaily}/>} />
+        <Route path="/coin/:slug" element={<CoinDetails coinDataDaily={coinDataDaily}/>} />
+        <Route path="/newtransaction" element={<NewTransaction coinDataDaily={coinDataDaily} />} />
+        <Route path="/global" element={<GlobalCurrencies coinDataDaily={coinDataDaily} hello={hello} />} />
         <Route path="*" element={<ErrorPage />}/>
       </Routes>
     </BrowserRouter>
