@@ -1,8 +1,8 @@
 import {Link,useNavigate} from "react-router-dom";
 
 const NavBar = () => {
-    const navigate = useNavigate();
-    const goBack = () => navigate(-1);
+    // const navigate = useNavigate();
+    // const goBack = () => navigate(-1);
     
     return (
         <ul>
@@ -17,7 +17,7 @@ const NavBar = () => {
                 <Link to="/coin/:slug">Coin Details</Link>
             </li>
             <li>
-                <Link to="/newtransaction">New Transaction</Link>
+                <Link to="/transactionform">New Transaction</Link>
             </li>
             <li>
                 <Link to="/Global">Cryptoverse</Link>
@@ -26,7 +26,7 @@ const NavBar = () => {
                 <Link to="/Error">Error Message</Link>
             </li>
             <li>
-                <button onClick={goBack}>Back</button>
+                {/* <button onClick={goBack}>Back</button> */}
             </li>
 
         </ul>
