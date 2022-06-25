@@ -3,18 +3,56 @@ import GlobalCurrencies from "./components/Pages/GlobalCurrencies";
 import CoinRouter from "./components/Router";
 
 const LogicContainer = () => {
-    const [coins, setCoins] = useState(["BTC", "ETH"]);
-    const [coinDataDaily, setCoinDataDaily] = useState([]);
-    const [coinData5Min, setCoinData5Min] = useState([]);
+    // API States
+    const [liveCoinData, setLiveCoinData] = useState([]);
+    // 
     const [loaded, setLoaded] = useState(false);
+    // Testing states
     const [hello, sethello] = useState("Helloooooooo");
-    
+    // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
 
-    let getPortfolioDataHasRun = false  //Set with an if statement so that useEffect will stop running twice on startup
+    
+    //Run function on startup
+    let startUpHasRun = false  //Set with an if statement so that useEffect will stop running twice on startup
+    useEffect(() =>{
+        if (startUpHasRun === false) {
+            getLiveCoinData()
+            getPortfolioData()
+            startUpHasRun = true
+        }},[]);
+    ///////////////////////////////////////////API
+    // refresh prices interval in milliseconds
+    const PriceInterval = 15000  
+    //Run function every interval
+    useEffect(() => {
+        const id = setInterval(() => getLiveCoinData(), PriceInterval)
+        return () => clearInterval(id)
+      }, []);
+    //Get data from API 
+    const getLiveCoinData = () => {
 
+        let liveData = []
 
+        console.log("Getting Live data")
+        fetch(`https://api.nomics.com/v1/currencies/ticker?key=f7eb2c856bc0090a765a58477fb21a31db6146ba&convert=GBP`)        
+        .then(res=>res.json())
+        .then(coins => coins.forEach(coin => {
+            let liveCoinObject = [coin.id,{
+                logo:[coin.logo_url],
+                name:[coin.name],
+                abbreviation:[coin.id],
+                price:[coin.price],
+                '1d':[coin['1d'].price_change_pct],
+                '7d':[coin['7d'].price_change_pct],
+                '30d':[coin['30d'].price_change_pct],
+                '365d':[coin['365d'].price_change_pct]}]
+
+            liveData.push(liveCoinObject)
+        })).then(res => setLiveCoinData(liveData))
+    }
+    ///////////////////////////////////////DATABASE
     const getPortfolioData = () => {
         
         let collatedCoinList = []
@@ -53,48 +91,41 @@ const LogicContainer = () => {
                         coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) + parseInt(transaction.quantity)
                     }
                     // If transaction type is sell
-                    else {
-                        coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)
-                    }
-                    }
-
-                    
-    }   ))
-                .then(res => setPortfolioData(coinDetails))
+                    else {coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)}}
+    }))
+    .then(res => setPortfolioData(coinDetails))
     }
 
-    useEffect(()=> {
-        if (getPortfolioDataHasRun === false) {
-            getPortfolioData();
-            getPortfolioDataHasRun = true
-        }
-    }, []) 
 
-    const getCoinData = () => {
-        console.log("Getting 5 min coin data");
-        // const coinPromises = coins.map((coin) => {
-        //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
-        //     .then(response => response.json())})
-        // Promise.all(coinPromises)
-        // .then((combinedData) => {
-        //     setCoinData5Min(combinedData);
-        // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
-        const coinDailyPromises = coins.map((coin) => {
-            return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=GBP&apikey=1786JGDXIS069AHE`)
-            .then(response => response.json())})
-        Promise.all(coinDailyPromises)
-        .then((combinedData) => {
-            console.log(combinedData);
-            setCoinDataDaily(combinedData);
-            console.log(combinedData[0]["Meta Data"]["3. Digital Currency Name"]);
-        })
-        .then(setLoaded(true));
 
-    }
 
-    useEffect(()=> {
-        getCoinData();
-    }, []) 
+
+
+    // const getCoinData = () => {
+    //     console.log("Getting 5 min coin data");
+    //     // const coinPromises = coins.map((coin) => {
+    //     //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
+    //     //     .then(response => response.json())})
+    //     // Promise.all(coinPromises)
+    //     // .then((combinedData) => {
+    //     //     setCoinData5Min(combinedData);
+    //     // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
+    //     const coinDailyPromises = coins.map((coin) => {
+    //         return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=GBP&apikey=1786JGDXIS069AHE`)
+    //         .then(response => response.json())})
+    //     Promise.all(coinDailyPromises)
+    //     .then((combinedData) => {
+    //         console.log(combinedData);
+    //         setCoinDataDaily(combinedData);
+    //         console.log(combinedData[0]["Meta Data"]["3. Digital Currency Name"]);
+    //     })
+    //     .then(setLoaded(true));
+
+    // }
+
+    // useEffect(()=> {
+    //     getCoinData();
+    // }, []) 
 
     // latest coin values
     // useEffect(()=> { 

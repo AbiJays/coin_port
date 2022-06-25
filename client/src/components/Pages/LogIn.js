@@ -1,9 +1,9 @@
-const LogIn = ({dbData,portfolioData}) => {
+const LogIn = ({dbData,portfolioData,timerTest}) => {
     return (
         <>
         <h1>LogIn Page </h1>
-        <p>{dbData}</p>
-        <p>{portfolioData}</p>
+
+        <p>{timerTest}</p>
         </>
     );
 }
