@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import NavBar from "./NavBar";
 import LogIn from './Pages/LogIn';
 import MyPortfolio from './Pages/MyPortfolio';
 import CoinDetails from './Pages/CoinDetails';
@@ -10,7 +10,7 @@ import ErrorPage from './Pages/ErrorPage';
 const CoinRouter = ({hello}) => {
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
+      <NavBar />
       <Routes>
         <Route exact path="/" element ={<LogIn />} />
         <Route path="/myportfolio" element={<MyPortfolio />} />
