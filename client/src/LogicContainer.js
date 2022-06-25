@@ -103,7 +103,7 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData}/>
+            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} coinDataDaily={coinDataDaily}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
