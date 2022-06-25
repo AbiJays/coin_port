@@ -1,9 +1,13 @@
 import './App.css';
 
+import LogicContainer from './LogicContainer';
+
 function App() {
   return (
     <>
-    <p>Here's the client</p>
+    <h1>Here's the client</h1>
+    
+    <LogicContainer />
     </>
   );
 }
