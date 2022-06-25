@@ -3,7 +3,8 @@ const GlobalCurrencies = ({coinDataDaily, loaded, hello}) => {
 
     return (
         <>
-            <p>Global page</p>
+            <p>Available Crypto Currencies</p>
+            {/* <GlobalCoins coinDataDaily={coinDataDaily}/> */}
             <p>{hello}</p>
         </>
     )
