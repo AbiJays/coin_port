@@ -84,9 +84,7 @@ const LogicContainer = () => {
             .then(response => response.json())})
         Promise.all(coinDailyPromises)
         .then((combinedData) => {
-            console.log(combinedData);
             setCoinDataDaily(combinedData);
-            console.log(combinedData[0]["Meta Data"]["3. Digital Currency Name"]);
         })
         .then(setLoaded(true));
 
