@@ -8,6 +8,67 @@ const LogicContainer = () => {
     const [coinData5Min, setCoinData5Min] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [hello, sethello] = useState("Helloooooooo");
+    
+    const [dbData, setDbData] = useState([]);
+    const [portfolioData, setPortfolioData] = useState([]);
+
+    let getPortfolioDataHasRun = false  //Set with an if statement so that useEffect will stop running twice on startup
+
+
+    const getPortfolioData = () => {
+        
+        let collatedCoinList = []
+        let coinDetails = []
+
+        console.log("Getting Portfolio data")
+        fetch(`http://localhost:5000/api/transactions`)
+            .then(res => res.json())
+            .then(transactions => transactions.forEach( transaction => {
+                setDbData(transactions)
+                if (!(collatedCoinList.includes(transaction.refName))){
+                    collatedCoinList.push(transaction.refName) 
+                    
+                    let coinObject = [transaction.refName,{
+                        logo:[transaction.logo],
+                        name:[transaction.name],
+                        abbreviation:[transaction.refName],
+                        // weightedAveragePurchasePrice:[transaction.price],
+                        portfolioQuantity:[transaction.quantity],
+                        currentPrice:['tbc'],
+                        trend:['tbc'],
+                        investmentValue:['tbc']//,
+                        // totalSpend:[parseInt(transaction.quantity)*parseInt(transaction.price)],
+                        // totalQuantity:[transaction.quantity]
+                        }
+                    ]
+                    coinDetails.push(coinObject)
+                }
+                // Coin already in list
+                else {
+                    // find coin index in coinDetails
+                    let index = coinDetails.findIndex((coin) => coin[0] == transaction.refName)
+                    // Quantity
+                    // If transaction type is buy
+                    if (transaction.type === 'BUY') {
+                        coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) + parseInt(transaction.quantity)
+                    }
+                    // If transaction type is sell
+                    else {
+                        coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)
+                    }
+                    }
+
+                    
+    }   ))
+                .then(res => setPortfolioData(coinDetails))
+    }
+
+    useEffect(()=> {
+        if (getPortfolioDataHasRun === false) {
+            getPortfolioData();
+            getPortfolioDataHasRun = true
+        }
+    }, []) 
 
     const getCoinData = () => {
         console.log("Getting 5 min coin data");
@@ -42,7 +103,7 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter coinDataDaily={coinDataDaily} loaded={loaded} hello={hello}/>
+            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
