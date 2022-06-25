@@ -13,7 +13,9 @@ const PortfolioCoins = ({coinDataDaily}) => {
                 <ul>
                     <li>{data["Meta Data"]["3. Digital Currency Name"]}</li>
                     <li>{data["Meta Data"]["2. Digital Currency Code"]}</li>
-                    <li>Current Price - TBD</li>
+                    <li>Average Purchase Price -TBD</li>
+                    <li>Current Global Price - TBD</li>
+                    <li>Investment Value - TBD</li>
                     <li>Trend Arrow - TBD</li>
                 </ul>
             </a>
