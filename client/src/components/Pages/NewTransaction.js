@@ -9,7 +9,7 @@ const TransactionForm = () => {
     const [ price, setPrice] = useState("");
 
     const handleCurrencyChange = (event) => {
-        setCurrencyCoin(event.target.value);
+        setCurrency(event.target.value);
     }
 
     const handleTransactionQuantityChange = (event) => {
@@ -26,18 +26,24 @@ const TransactionForm = () => {
     const handleTransactionSubmit = (event) => {
         event.preventDefault();
         const currencyToSubmit = currency.trim();
-        const ToSubmit = .trim();
-        const ToSubmit = .trim();
+        const transactionQuantityToSubmit = transactionQuantity.trim();
+        const dateTimeToSubmit = dateTime.trim();
         const priceToSubmit = price.trim();
-        if ( || )
+        if ( !currencyToSubmit || !transactionQuantityToSubmit || !dateTimeToSubmit || !priceToSubmit ){
             return
+        }
+        // TODO update transactions in portfolio
+        setCurrency("");
+        setDateTime("");
+        setPrice("");
+        setTransactionQuantity("");
     }
     
     
     return (
         <>
         <h1>New Transaction Page</h1>
-        <form>
+        <form className="transaction-form" onSubmit={handleTransactionSubmit} >
             <input 
             type="text" 
             placeholder="Coin Name"
