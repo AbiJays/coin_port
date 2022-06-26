@@ -7,7 +7,7 @@ import TransactionForm from './Pages/NewTransaction';
 import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
 
-const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData}) => {
+const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData, addTransaction}) => {
   return (
     <BrowserRouter>
       <div className='header'>
@@ -19,7 +19,7 @@ const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData}) => {
           <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData} />} />
           <Route path="/myportfolio" element={<MyPortfolio liveCoinData={liveCoinData} portfolioData={portfolioData}/>} />
           <Route path="/coin/:slug" element={<CoinDetails coinDataDaily={coinDataDaily}/>} />
-          <Route path="/transactionform" element={<TransactionForm coinDataDaily={coinDataDaily} />} />
+          <Route path="/transactionform" element={<TransactionForm coinDataDaily={coinDataDaily} addTransaction={addTransaction}/>} />
           <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} hello={hello} />} />
           <Route path="*" element={<ErrorPage />}/>
         </Routes>

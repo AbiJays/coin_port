@@ -118,6 +118,9 @@ const LogicContainer = () => {
     .then(res => setPortfolioData(coinDetails))
     }
 
+    const addTransaction = (transaction) => {
+        setPortfolioData([...portfolioData, transaction])
+    };
 
     // const getCoinData = () => {
     //     console.log("Getting 5 min coin data");
@@ -150,7 +153,7 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData}/>
+            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData} addTransaction={addTransaction}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
