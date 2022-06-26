@@ -5,7 +5,7 @@ const GlobalCurrencies = ({liveCoinData, loaded, hello}) => {
 
     return (
         <>
-            <p>Available Crypto Currencies</p>
+            <h1>Available Crypto Currencies</h1>
             <GlobalCoins liveCoinData={liveCoinData}/>
         </>
     )
