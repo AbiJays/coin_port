@@ -4,11 +4,12 @@ import TransactionForm from "./NewTransaction";
 import PortfolioTotal from "./pageComponents/PortfolioTotal";
 import PortfolioCoins from "./pageComponents/PortfolioCoins";
 
-const MyPortfolio = ({coinDataDaily, portfolioData}) => {
+const MyPortfolio = ({liveCoinData, portfolioData}) => {
+    
     return (
         <>
-        <PortfolioTotal coinDataDaily={coinDataDaily}/>
-        <PortfolioCoins coinDataDaily={coinDataDaily} portfolioData={portfolioData}/>
+        <PortfolioTotal liveCoinData={liveCoinData}/>
+        <PortfolioCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
         <h2>Add Investment</h2>
         <TransactionForm/>
         </> 

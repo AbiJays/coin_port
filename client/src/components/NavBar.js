@@ -20,10 +20,10 @@ const NavBar = () => {
                 <Link to="/transactionform">New Transaction</Link>
             </li>
             <li>
-                <Link to="/Global">Cryptoverse</Link>
+                <Link to="/global">Cryptoverse</Link>
             </li>
             <li>
-                <Link to="/Error">Error Message</Link>
+                <Link to="/error">Error Message</Link>
             </li>
             <li>
                 {/* <button onClick={goBack}>Back</button> */}

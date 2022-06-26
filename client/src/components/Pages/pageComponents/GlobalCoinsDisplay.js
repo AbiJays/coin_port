@@ -3,13 +3,7 @@ const GlobalCoinsDisplay = ({liveCoinData}) => {
     if (liveCoinData.length > 0) {
 
         const globalCoinDataDisplay = liveCoinData.map(data => {
-            // const name = data.name;
-            // const code = data.abbreviation;
-            // const priceData = data["Time Series (Digital Currency Daily)"]
-            // const mostRecentData = priceData[Object.keys(priceData)[0]]
-            // const mostRecentPrice = mostRecentData["4a. close (GBP)"]
-            // const trendComparisonData = priceData[Object.keys(priceData)[1]]
-            // const trendComparisonPrice = trendComparisonData["4a. close (GBP)"]
+
             const getTrend = (data) => data >= 0 ? '+' : '-';
     
             return (
