@@ -1,6 +1,7 @@
 const LogIn = ({dbData,portfolioData,liveCoinData}) => {
     
     console.log(portfolioData)
+    console.log(liveCoinData);
     // console.log(liveCoinData[0][1].price)
 
     return (

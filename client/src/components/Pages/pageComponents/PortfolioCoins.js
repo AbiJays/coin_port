@@ -1,8 +1,8 @@
 import PortfolioCoinsDisplay from "./PortfolioCoinsDisplay"
 
-const PortfolioCoins = ({coinDataDaily, portfolioData}) => {
+const PortfolioCoins = ({liveCoinData, portfolioData}) => {
     
-    if (coinDataDaily.length ===0 ){
+    if (liveCoinData.length ===0 ){
         return (
             <p>Loading...</p>
         )
@@ -10,7 +10,7 @@ const PortfolioCoins = ({coinDataDaily, portfolioData}) => {
     
     console.log(portfolioData[0][1])
 
-    if (coinDataDaily.length > 0) {
+    if (liveCoinData.length > 0) {
 
         // const getCoinProperty = (coin, property) => {
         //     let coinPortfolioData = portfolioData.filter(data => data[0] === coin);
@@ -53,7 +53,7 @@ const PortfolioCoins = ({coinDataDaily, portfolioData}) => {
                         </tr>
                         </thead>
 
-                    <PortfolioCoinsDisplay coinDataDaily={coinDataDaily} portfolioData={portfolioData}/>    
+                    <PortfolioCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>    
                     {/* {coinDataDisplay} */}
 
                     </table>

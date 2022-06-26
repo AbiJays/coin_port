@@ -1,24 +1,24 @@
-const GlobalCoinsDisplay = ({coinDataDaily}) => {
+const GlobalCoinsDisplay = ({liveCoinData}) => {
 
-    if (coinDataDaily.length > 0) {
+    if (liveCoinData.length > 0) {
 
-        const globalCoinDataDisplay = coinDataDaily.map(data => {
-            const name = data["Meta Data"]["3. Digital Currency Name"];
-            const code = data["Meta Data"]["2. Digital Currency Code"];
-            const priceData = data["Time Series (Digital Currency Daily)"]
-            const mostRecentData = priceData[Object.keys(priceData)[0]]
-            const mostRecentPrice = mostRecentData["4a. close (GBP)"]
-            const trendComparisonData = priceData[Object.keys(priceData)[1]]
-            const trendComparisonPrice = trendComparisonData["4a. close (GBP)"]
-            const getTrend = (current, previous) => current >= previous ? '+' : '-';
+        const globalCoinDataDisplay = liveCoinData.map(data => {
+            // const name = data.name;
+            // const code = data.abbreviation;
+            // const priceData = data["Time Series (Digital Currency Daily)"]
+            // const mostRecentData = priceData[Object.keys(priceData)[0]]
+            // const mostRecentPrice = mostRecentData["4a. close (GBP)"]
+            // const trendComparisonData = priceData[Object.keys(priceData)[1]]
+            // const trendComparisonPrice = trendComparisonData["4a. close (GBP)"]
+            const getTrend = (data) => data >= 0 ? '+' : '-';
     
             return (
                 <tbody>
                     <tr>
-                        <td><a href={"http://localhost:3000/coin/" + name}>{name}</a></td>
-                        <td>{code}</td>
-                        <td>{mostRecentPrice}</td>
-                        <td>{getTrend(mostRecentPrice, trendComparisonPrice)}</td>
+                        <td><a href={"http://localhost:3000/coin/" + data[1].name}>{data[1].name}</a></td>
+                        <td>{data[1].abbreviation}</td>
+                        <td>{data[1].price}</td>
+                        <td>{getTrend(data[1]['1d'])}</td>
                     </tr>
                 </tbody>
             )

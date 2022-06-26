@@ -1,14 +1,16 @@
 import GlobalCoinsDisplay from "./GlobalCoinsDisplay"
 
-const GlobalCoins = ({coinDataDaily}) => {
+const GlobalCoins = ({liveCoinData, hello}) => {
 
-    if (coinDataDaily.length === 0) {
+    // console.log(liveCoinData)
+    if (liveCoinData.length === 0) {
         return (
             <p>Loading...</p>
-        )
-    }
-
-    if (coinDataDaily.length > 0) {
+            )
+        }
+        
+        if (liveCoinData.length > 0) {
+            
 
         // const globalCoinDataDisplay = coinDataDaily.map(data => {
         //     return (
@@ -35,7 +37,7 @@ const GlobalCoins = ({coinDataDaily}) => {
                             <th>Current Trend</th>
                         </tr>
                     </thead>
-                    <GlobalCoinsDisplay coinDataDaily={coinDataDaily}/>
+                    <GlobalCoinsDisplay liveCoinData={liveCoinData}/>
                 </table>
             </div>
         )
