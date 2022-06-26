@@ -8,7 +8,7 @@ const MyPortfolio = ({liveCoinData, portfolioData}) => {
     
     return (
         <>
-        <PortfolioTotal liveCoinData={liveCoinData}/>
+        <PortfolioTotal portfolioData={portfolioData}/>
         <PortfolioCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
         <h2>Add Investment</h2>
         <TransactionForm/>

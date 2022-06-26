@@ -19,7 +19,7 @@ const GlobalCoins = ({liveCoinData, hello}) => {
                             <th>Currency</th>
                             <th></th>
                             <th></th>
-                            <th>Current Price</th>
+                            <th>Current Price (£)</th>
                             <th>Current Trend</th>
                         </tr>
                     </thead>

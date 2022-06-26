@@ -1,8 +1,10 @@
-const PortfolioTotal = ({coinDataDaily}) => {
+import { getPortfolioTotal } from "../../../helpers/DisplayHelpers"
+
+const PortfolioTotal = ({portfolioData}) => {
     return (
         <div>
             <h1>Portfolio Total Value:</h1>
-            <p>Loadsadosh</p>
+            <p>£{getPortfolioTotal(portfolioData)}</p>
         </div>
     )
 }

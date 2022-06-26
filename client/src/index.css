@@ -16,3 +16,11 @@ code {
   height: 15px;
   width: auto;
 }
+
+.trend-up {
+  color: green;
+}
+
+.trend-down {
+  color: red;
+}
