@@ -76,7 +76,7 @@ const LogicContainer = () => {
 
 
                     let coinObject = [transaction.refName,{
-                        logo:[transaction.logo],
+                        logo:[liveCoinData[index][1].logo],
                         name:[transaction.name],
                         abbreviation:[transaction.refName],
                         // weightedAveragePurchasePrice:[transaction.price],

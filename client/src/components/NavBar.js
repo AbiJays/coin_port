@@ -22,12 +22,9 @@ const NavBar = () => {
             <li>
                 <Link to="/global">Cryptoverse</Link>
             </li>
-            <li>
-                <Link to="/error">Error Message</Link>
-            </li>
-            <li>
-                {/* <button onClick={goBack}>Back</button> */}
-            </li>
+            {/* <li>
+                <button onClick={goBack}>Back</button>
+            </li> */}
 
         </ul>
     );

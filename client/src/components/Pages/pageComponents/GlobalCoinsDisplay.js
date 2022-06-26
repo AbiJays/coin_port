@@ -10,6 +10,7 @@ const GlobalCoinsDisplay = ({liveCoinData}) => {
                 <tbody>
                     <tr>
                         <td><a href={"http://localhost:3000/coin/" + data[1].name}>{data[1].name}</a></td>
+                        <td><img src={data[1].logo} alt={data[1].name + "logo"} className="logo" /></td>
                         <td>{data[1].abbreviation}</td>
                         <td>{data[1].price}</td>
                         <td>{getTrend(data[1]['1d'])}</td>

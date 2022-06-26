@@ -1,8 +1,8 @@
-const PortfolioCoinsDisplay = ({liveCoinData, portfolioData}) => {
+const PortfolioCoinsDisplay = ({portfolioData}) => {
 
 
 
-    if (liveCoinData.length > 0 && portfolioData.length > 0) {
+    if (portfolioData.length > 0) {
 
 
 
@@ -13,7 +13,7 @@ const PortfolioCoinsDisplay = ({liveCoinData, portfolioData}) => {
             <tbody>
                 <tr>
                     <td><a href={"http://localhost:3000/coin/" + data[1].name}>{data[1].name}</a></td>
-                    <td>{data[1].logo}</td>
+                    <td><img src={data[1].logo} alt={data[1].name + "logo"} className="logo" /></td>
                     <td>{data[1].abbreviation}</td>
                     <td>{data[1].portfolioQuantity}</td>
                     <td></td>
