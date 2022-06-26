@@ -119,29 +119,23 @@ const LogicContainer = () => {
     }
 
 
-
-
-
-
-    // const getCoinData = () => {
-    //     console.log("Getting 5 min coin data");
-    //     // const coinPromises = coins.map((coin) => {
-    //     //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
-    //     //     .then(response => response.json())})
-    //     // Promise.all(coinPromises)
-    //     // .then((combinedData) => {
-    //     //     setCoinData5Min(combinedData);
-    //     // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
-    //     const coinDailyPromises = coins.map((coin) => {
-    //         return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=GBP&apikey=1786JGDXIS069AHE`)
-    //         .then(response => response.json())})
-    //     Promise.all(coinDailyPromises)
-    //     .then((combinedData) => {
-    //         console.log(combinedData);
-    //         setCoinDataDaily(combinedData);
-    //         console.log(combinedData[0]["Meta Data"]["3. Digital Currency Name"]);
-    //     })
-    //     .then(setLoaded(true));
+    const getCoinData = () => {
+        console.log("Getting 5 min coin data");
+        // const coinPromises = coins.map((coin) => {
+        //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
+        //     .then(response => response.json())})
+        // Promise.all(coinPromises)
+        // .then((combinedData) => {
+        //     setCoinData5Min(combinedData);
+        // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
+        const coinDailyPromises = coins.map((coin) => {
+            return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=GBP&apikey=1786JGDXIS069AHE`)
+            .then(response => response.json())})
+        Promise.all(coinDailyPromises)
+        .then((combinedData) => {
+            setCoinDataDaily(combinedData);
+        })
+        .then(setLoaded(true));
 
     // }
 
@@ -156,10 +150,10 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData}/>
+            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} coinDataDaily={coinDataDaily} liveCoinData={liveCoinData}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
-};
+};}
 
 export default LogicContainer;
