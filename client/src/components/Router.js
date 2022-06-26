@@ -7,12 +7,12 @@ import NewTransaction from './Pages/NewTransaction';
 import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
 
-const CoinRouter = ({hello, coinDataDaily,timerTest}) => {
+const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData}) => {
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
       <Routes>
-        <Route exact path="/" element ={<LogIn timerTest={timerTest} />} />
+        <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData}/>} />
         <Route path="/myportfolio" element={<MyPortfolio coinDataDaily={coinDataDaily}/>} />
         <Route path="/coin/:slug" element={<CoinDetails coinDataDaily={coinDataDaily}/>} />
         <Route path="/newtransaction" element={<NewTransaction coinDataDaily={coinDataDaily} />} />

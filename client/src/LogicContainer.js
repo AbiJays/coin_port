@@ -23,7 +23,8 @@ const LogicContainer = () => {
             startUpHasRun = true
         }},[]);
     ///////////////////////////////////////////API
-    // refresh prices interval in milliseconds
+    
+    // Refresh price update interval in milliseconds
     const PriceInterval = 15000  
     //Run function every interval
     useEffect(() => {
@@ -53,6 +54,10 @@ const LogicContainer = () => {
         })).then(res => setLiveCoinData(liveData))
     }
     ///////////////////////////////////////DATABASE
+    
+    // updates portfolio data every time new live data is available
+    useEffect( () => getPortfolioData(),[liveCoinData])
+    
     const getPortfolioData = () => {
         
         let collatedCoinList = []
@@ -64,18 +69,23 @@ const LogicContainer = () => {
             .then(transactions => transactions.forEach( transaction => {
                 setDbData(transactions)
                 if (!(collatedCoinList.includes(transaction.refName))){
-                    collatedCoinList.push(transaction.refName) 
+                    collatedCoinList.push(transaction.refName)
                     
+                    //Find coin index
+                    let index = liveCoinData.findIndex((coin) => coin[0] == transaction.refName)
+
+
                     let coinObject = [transaction.refName,{
                         logo:[transaction.logo],
                         name:[transaction.name],
                         abbreviation:[transaction.refName],
                         // weightedAveragePurchasePrice:[transaction.price],
                         portfolioQuantity:[transaction.quantity],
-                        currentPrice:['tbc'],
-                        trend:['tbc'],
-                        investmentValue:['tbc']//,
-                        // totalSpend:[parseInt(transaction.quantity)*parseInt(transaction.price)],
+                        currentPrice:[liveCoinData[index][1].price],
+                        trend:[liveCoinData[index][1]['1d']],
+                        investmentValue:[parseInt(transaction.quantity)*parseInt(liveCoinData[index][1].price)],
+                        
+                        totalSpend:[parseInt(transaction.quantity)*parseInt(transaction.price)]
                         // totalQuantity:[transaction.quantity]
                         }
                     ]
@@ -85,14 +95,26 @@ const LogicContainer = () => {
                 else {
                     // find coin index in coinDetails
                     let index = coinDetails.findIndex((coin) => coin[0] == transaction.refName)
-                    // Quantity
+                   
+                    //Update Quantity, portfolio value & total Spend
+                    let newQuantity;
                     // If transaction type is buy
                     if (transaction.type === 'BUY') {
-                        coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) + parseInt(transaction.quantity)
-                    }
+                        newQuantity = parseInt(coinDetails[index][1].portfolioQuantity) + parseInt(transaction.quantity)
+                        coinDetails[index][1].portfolioQuantity = newQuantity
+                        //Update portfolio value with new quantity
+                        coinDetails[index][1].investmentValue = (newQuantity*parseInt(liveCoinData[index][1].price))
+                        //Update total spend
+                        coinDetails[index][1].totalSpend = (parseInt(coinDetails[index][1].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))}
                     // If transaction type is sell
-                    else {coinDetails[index][1].portfolioQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)}}
-    }))
+                    else {
+                        newQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)
+                        coinDetails[index][1].portfolioQuantity = newQuantity
+                        //Update portfolio value with new quantity
+                        coinDetails[index][1].investmentValue = (newQuantity*parseInt(liveCoinData[index][1].price))
+                        //Update total spend
+                         coinDetails[index][1].totalSpend = (parseInt(coinDetails[index][1].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))}}
+                }))
     .then(res => setPortfolioData(coinDetails))
     }
 
@@ -134,7 +156,7 @@ const LogicContainer = () => {
 
     return (
         <>
-            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData}/>
+            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
     )
