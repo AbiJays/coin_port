@@ -42,7 +42,7 @@ const TransactionForm = () => {
     
     return (
         <>
-        <h1>New Transaction Page</h1>
+        <h1>Log a New Transaction</h1>
         <form className="transaction-form" onSubmit={handleTransactionSubmit} >
             <input 
             type="text" 

@@ -12,6 +12,35 @@ code {
     monospace;
 }
 
+.header {
+  display:flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+
+.header > ul {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.header > ul li {
+  padding-right: 10px;
+}
+
+.header > a {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .logo {
   height: 15px;
   width: auto;
