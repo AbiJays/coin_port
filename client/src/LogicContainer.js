@@ -25,7 +25,7 @@ const LogicContainer = () => {
     ///////////////////////////////////////////API
     
     // Refresh price update interval in milliseconds
-    const PriceInterval = 15000  
+    const PriceInterval = 60000  
     //Run function every interval
     useEffect(() => {
         const id = setInterval(() => getLiveCoinData(), PriceInterval)
