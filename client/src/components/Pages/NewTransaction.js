@@ -61,6 +61,22 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
         // Make sure logic container converst all numbers to integers
     }
     
+    // Copied over from bird sightings
+    // Need TransactionService.js file in which to define postTransaction()
+    // const [formData, setFormData] = useState({})
+    // const onChange = (e) => {
+    //     formData[e.target.id] = e.target.value;
+    //     setFormData(formData);
+    // }
+
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+    //     postTransaction(formData).then(() => {
+    //         addTransaction(formData);
+    //     })
+    // }
+
+
     
 
 
@@ -116,7 +132,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
 
     return (
         <>
-        <h1>New Transaction</h1>
+        <h1>Log a New Transaction</h1>
 
         <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex][1].portfolioQuantity} {liveCoinData[coinIndex][1].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${portfolioData[portfolioIndex][1].investmentValue}`} </p>
         <p>The current price is: £{liveCoinData[coinIndex][1].price}</p>

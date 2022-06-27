@@ -49,8 +49,6 @@ const LogicContainer = () => {
                 '30d':coin['30d'] && coin['30d'].price_change_pct,
                 '365d':coin['365d'] && coin['365d'].price_change_pct}]
 
-            if (!coin['7d']){console.log(liveCoinObject[1])}
-
             liveData.push(liveCoinObject)
         })).then(res => setLiveCoinData(liveData))
     }
@@ -74,7 +72,7 @@ const LogicContainer = () => {
                     let index = liveCoinData.findIndex((coin) => coin[0] == transaction.refName)
                     
                     let coinObject = [transaction.refName,{
-                        logo:[transaction.logo],
+                        logo:[liveCoinData[index][1].logo],
                         name:[transaction.name],
                         abbreviation:[transaction.refName],
                         // weightedAveragePurchasePrice:[transaction.price],
@@ -116,6 +114,9 @@ const LogicContainer = () => {
     .then(res => setPortfolioData(coinDetails))
     }
 
+    const addTransaction = (transaction) => {
+        setPortfolioData([...portfolioData, transaction])
+    };
 
     // const getCoinData = () => {
     //     console.log("Getting 5 min coin data");
@@ -148,8 +149,13 @@ const LogicContainer = () => {
     if (liveCoinData.length > 0 && portfolioData.length > 0) {
     return (
         <>
-            <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData}/>
-            {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
+            <CoinRouter
+            loaded={loaded}
+            hello={hello}
+            dbData={dbData}
+            portfolioData={portfolioData}
+            liveCoinData={liveCoinData}
+            addTransaction={addTransaction}/>
         </>
     )}
     return <h1>Loading</h1> 
