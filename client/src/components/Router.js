@@ -8,7 +8,7 @@ import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
 
 const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData, addTransaction, dbData}) => {
-  console.log(dbData);
+  // console.log('Router', dbData);
   return (
     <BrowserRouter>
       <div className='header'>

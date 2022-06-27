@@ -34,7 +34,7 @@ const LogicContainer = () => {
 
         let liveData = []
 
-        console.log("Getting Live data")
+        // console.log("Getting Live data")
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
@@ -61,7 +61,7 @@ const LogicContainer = () => {
         let collatedCoinList = []
         let coinDetails = []
 
-        console.log("Getting Portfolio data")
+        // console.log("Getting Portfolio data")
         fetch(`http://localhost:5000/api/transactions`)
             .then(res => res.json())
             .then(transactions => transactions.forEach( transaction => {

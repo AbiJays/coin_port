@@ -3,7 +3,7 @@ import { getTrend, portfolioCoinMarker } from "../../../helpers/DisplayHelpers"
 const GlobalCoinsDisplay = ({liveCoinData, portfolioData}) => {
 
     if (liveCoinData.length > 0) {
-        console.log(liveCoinData);
+        // console.log(liveCoinData);
         const globalCoinDataDisplay = liveCoinData.map(coin => {
 
 

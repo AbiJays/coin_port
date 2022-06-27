@@ -3,7 +3,7 @@ import CurrencyInput from 'react-currency-input-field';
 import TransactionHistory from "./pageComponents/TransactionHistory";
 
 const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
-    console.log(dbData)
+    // console.log('Transaction form', dbData)
     // Form entry
     const [ type, setType] = useState('BUY')
     const [ transactionQuantity, setTransactionQuantity ] = useState()
@@ -130,13 +130,15 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
         else {
             return <option value="BUY">BUY</option>
         }}
+        // console.log(portfolioData[portfolioIndex].investmentValue)
+        // console.log(liveCoinData[coinIndex].price)
 
     return (
         <>
         <h1>Log a New Transaction</h1>
 
-        <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${portfolioData[portfolioIndex].investmentValue}`} </p>
-        <p>The current price is: £{liveCoinData[coinIndex].price}</p>
+        <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue).toFixed(2)}`} </p>
+        <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>
 
         <form className="transaction-form" onSubmit={handleTransactionSubmit} >
             <select name="transactionType" id="transactionType" value={type} onChange={handleTypeChange}>

@@ -46,10 +46,29 @@ code {
   width: auto;
 }
 
+tbody {
+  text-align: center;
+}
+
+tbody>tr>:nth-child(1) {
+  text-align: left;
+}
+
 .trend-up {
   color: green;
 }
 
 .trend-down {
   color: red;
+}
+
+.link-container {
+  border: 1px black solid;
+  width: fit-content;
+  background-color: lightgrey;
+}
+
+.link-container > a {
+  text-decoration: none;
+  padding: 3px;
 }
