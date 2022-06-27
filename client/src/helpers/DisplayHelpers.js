@@ -17,12 +17,12 @@ export const getTrend = (trend) => {
 // change to .reduce
 export const getPortfolioTotal = (data) => {
     let portfolioTotal = 0
-    data.forEach(coin => portfolioTotal += parseFloat(coin[1].investmentValue))
+    data.forEach(coin => portfolioTotal += parseFloat(coin.investmentValue))
     return portfolioTotal
 }
 
 const checkPortfolioCoin = (data, coin) => {
-    return data.some(portfolioCoin =>(portfolioCoin[0] === coin))
+    return data.some(portfolioCoin =>(portfolioCoin.abbreviation === coin))
 }
 
 export const portfolioCoinMarker = (data, coin) => {

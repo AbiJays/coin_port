@@ -9,7 +9,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
     const [ dateTime, setDateTime ] = useState((new Date()).toISOString().slice(0,-8))
     const [ price, setPrice] = useState()
     // Coin info autofill
-    const [ coin, setCoin ] = useState(liveCoinData[0][0])
+    const [ coin, setCoin ] = useState(liveCoinData[0].abbreviation)
     const [ coinIndex, setCoinIndex ] = useState(0)
     const [ portfolioIndex, setPortfolioIndex] = useState(0)
     // Event handlers for filling out form
@@ -21,15 +21,15 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
         let newType = event.target.value      
         setType(newType)
         if (newType === 'BUY') { // If buying, update the displayed coin to the first entry in the live data
-            coinChange(liveCoinData[0][0])
+            coinChange(liveCoinData[0].abbreviation)
         }
         else { // If selling, update the displayed coin to the first entry in the portfolio
-            coinChange(portfolioData[0][0])
+            coinChange(portfolioData[0].abbreviation)
         }}
     // Update indexes
     const coinChange = (newCoin) => {
-        let findIndex = liveCoinData.findIndex((coin) => coin[0] === newCoin)
-        let findPortfolioIndex = portfolioData.findIndex((coin) => coin[0] === newCoin)
+        let findIndex = liveCoinData.findIndex((coin) => coin.abbreviation == newCoin)
+        let findPortfolioIndex = portfolioData.findIndex((coin) => coin.abbreviation == newCoin)
         setCoin(newCoin)
         setCoinIndex(findIndex)
         setPortfolioIndex(findPortfolioIndex)}
@@ -39,7 +39,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
     // data to be sent to the db
     const payload = {
         refName:coin,
-        name:liveCoinData[coinIndex][1].name,
+        name:liveCoinData[coinIndex].name,
         logo:"TBC",
         quantity:transactionQuantity,
         "price":price,
@@ -99,9 +99,9 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
     // Display available coins to buy and sell
     const CoinOptions = () => {
         // Take the names of the first 25 coins from the live feed
-        const liveCoinList = liveCoinData.slice(0,24).map(coinName => coinName[0])
+        const liveCoinList = liveCoinData.slice(0,24).map(coinName => coinName.abbreviation)
         // Take the names of all the coins in our portfolio
-        const portfolioCoinList = portfolioData.map(coinName=>coinName[0])
+        const portfolioCoinList = portfolioData.map(coinName=>coinName.abbreviation)
         // Return an array of the unique values from both lists
         const coinList = liveCoinList.concat(portfolioCoinList.filter(coinName =>liveCoinList.indexOf(coinName) < 0))
         if (type === 'BUY') {
@@ -116,7 +116,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
             return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
         }
             else {
-            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex][1].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
+            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
         }}  
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {
@@ -134,8 +134,8 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
         <>
         <h1>Log a New Transaction</h1>
 
-        <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex][1].portfolioQuantity} {liveCoinData[coinIndex][1].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${portfolioData[portfolioIndex][1].investmentValue}`} </p>
-        <p>The current price is: £{liveCoinData[coinIndex][1].price}</p>
+        <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${portfolioData[portfolioIndex].investmentValue}`} </p>
+        <p>The current price is: £{liveCoinData[coinIndex].price}</p>
 
         <form className="transaction-form" onSubmit={handleTransactionSubmit} >
             <select name="transactionType" id="transactionType" value={type} onChange={handleTypeChange}>
@@ -160,10 +160,10 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <p>{liveCoinData[coinIndex][1].name}</p>
+                            <p>{liveCoinData[coinIndex].name}</p>
                         </td>
                         <td>
-                        {/* <p>{liveCoinData[coinIndex][1].logo}</p> */}
+                        {/* <p>{liveCoinData[coinIndex].logo}</p> */}
                         <p>logo</p>
                         </td>
                         <td>

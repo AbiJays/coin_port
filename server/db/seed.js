@@ -9,107 +9,107 @@ db.transactions.insertMany([
     "quantity": 14,
     "price": 47,
     "dateTime": "31/01/2022 23:42:12",
-    "type": "SELL"
-  },
-  {
-    "refName": "BTC",
-    "name": "Bitcoin",
-    "logo": "TBC'",
-    "quantity": 22,
-    "price": 29,
-    "dateTime": "24/12/2021 01:23:00",
     "type": "BUY"
-  },
-  {
-    "refName": "BCH",
-    "name": "Bitcoin Cash",
-    "logo": "TBC'",
-    "quantity": 22,
-    "price": 50,
-    "dateTime": "11/05/2022 21:47:00",
-    "type": "BUY"
-  },
-  {
-    "refName": "BCH",
-    "name": "Bitcoin Cash",
-    "logo": "TBC'",
-    "quantity": 2,
-    "price": 57,
-    "dateTime": "21/12/2021 04:15:48",
-    "type": "BUY"
-  },
-  {
-    "refName": "BCH",
-    "name": "Bitcoin Cash",
-    "logo": "TBC'",
-    "quantity": 84,
-    "price": 8,
-    "dateTime": "18/01/2022 21:18:12",
-    "type": "BUY"
-  },
-  {
-    "refName": "ETH",
-    "name": "Ethereum ",
-    "logo": "TBC'",
-    "quantity": 61,
-    "price": 15,
-    "dateTime": "03/03/2022 23:56:36",
-    "type": "BUY"
-  },
-  {
-    "refName": "ETH",
-    "name": "Ethereum ",
-    "logo": "TBC'",
-    "quantity": 28,
-    "price": 27,
-    "dateTime": "05/01/2022 03:47:00",
-    "type": "BUY"
-  },
-  {
-    "refName": "ETH",
-    "name": "Ethereum ",
-    "logo": "TBC'",
-    "quantity": 52,
-    "price": 97,
-    "dateTime": "21/06/2022 04:30:12",
-    "type": "SELL"
-  },
-  {
-    "refName": "BCH",
-    "name": "Bitcoin Cash",
-    "logo": "TBC'",
-    "quantity": 91,
-    "price": 90,
-    "dateTime": "01/02/2022 05:27:48",
-    "type": "BUY"
-  },
-  {
-    "refName": "ETH",
-    "name": "Ethereum ",
-    "logo": "TBC'",
-    "quantity": 11,
-    "price": 82,
-    "dateTime": "05/01/2022 21:03:48",
-    "type": "BUY"
-  },
-  {
-    "refName": "XRP",
-    "name": "Ripple",
-    "logo": "TBC'",
-    "quantity": 40,
-    "price": 43,
-    "dateTime": "12/03/2022 16:30:12",
-    "type": "BUY"
-  },
-  {
-    "refName": "BCH",
-    "name": "Bitcoin Cash",
-    "logo": "TBC'",
-    "quantity": 85,
-    "price": 100,
-    "dateTime": "17/03/2022 01:08:36",
-    "type": "SELL"
-  }//,
+  }//
+  // {
+  //   "refName": "BTC",
+  //   "name": "Bitcoin",
+  //   "logo": "TBC'",
+  //   "quantity": 22,
+  //   "price": 29,
+  //   "dateTime": "24/12/2021 01:23:00",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "BCH",
+  //   "name": "Bitcoin Cash",
+  //   "logo": "TBC'",
+  //   "quantity": 22,
+  //   "price": 50,
+  //   "dateTime": "11/05/2022 21:47:00",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "BCH",
+  //   "name": "Bitcoin Cash",
+  //   "logo": "TBC'",
+  //   "quantity": 2,
+  //   "price": 57,
+  //   "dateTime": "21/12/2021 04:15:48",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "BCH",
+  //   "name": "Bitcoin Cash",
+  //   "logo": "TBC'",
+  //   "quantity": 84,
+  //   "price": 8,
+  //   "dateTime": "18/01/2022 21:18:12",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "ETH",
+  //   "name": "Ethereum ",
+  //   "logo": "TBC'",
+  //   "quantity": 61,
+  //   "price": 15,
+  //   "dateTime": "03/03/2022 23:56:36",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "ETH",
+  //   "name": "Ethereum ",
+  //   "logo": "TBC'",
+  //   "quantity": 28,
+  //   "price": 27,
+  //   "dateTime": "05/01/2022 03:47:00",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "ETH",
+  //   "name": "Ethereum ",
+  //   "logo": "TBC'",
+  //   "quantity": 52,
+  //   "price": 97,
+  //   "dateTime": "21/06/2022 04:30:12",
+  //   "type": "SELL"
+  // },
+  // {
+  //   "refName": "BCH",
+  //   "name": "Bitcoin Cash",
+  //   "logo": "TBC'",
+  //   "quantity": 91,
+  //   "price": 90,
+  //   "dateTime": "01/02/2022 05:27:48",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "ETH",
+  //   "name": "Ethereum ",
+  //   "logo": "TBC'",
+  //   "quantity": 11,
+  //   "price": 82,
+  //   "dateTime": "05/01/2022 21:03:48",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "XRP",
+  //   "name": "Ripple",
+  //   "logo": "TBC'",
+  //   "quantity": 40,
+  //   "price": 43,
+  //   "dateTime": "12/03/2022 16:30:12",
+  //   "type": "BUY"
+  // },
+  // {
+  //   "refName": "BCH",
+  //   "name": "Bitcoin Cash",
+  //   "logo": "TBC'",
+  //   "quantity": 85,
+  //   "price": 100,
+  //   "dateTime": "17/03/2022 01:08:36",
+  //   "type": "SELL"
+  // },
   // {
   //   "refName": "ADA",
   //   "name": "Cardano",

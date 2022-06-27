@@ -11,12 +11,12 @@ const GlobalCoinsDisplay = ({liveCoinData, portfolioData}) => {
             return (
                 <tbody>
                     <tr>
-                        <td>{portfolioCoinMarker(portfolioData, coin[0])}</td>
-                        <td><a href={"http://localhost:3000/coin/" + coin[1].name}>{coin[1].name}</a></td>
-                        <td><img src={coin[1].logo} alt={coin[0] + "logo"} className="logo" /></td>
-                        <td>{coin[1].abbreviation}</td>
-                        <td>{parseFloat(coin[1].price).toFixed(2)}</td>
-                        <td>{getTrend(coin[1]['1d'])}</td>
+                        <td>{portfolioCoinMarker(portfolioData, coin.abbreviation)}</td>
+                        <td><a href={"http://localhost:3000/coin/" + coin.name}>{coin.name}</a></td>
+                        <td><img src={coin.logo} alt={coin.abbreviation + "logo"} className="logo" /></td>
+                        <td>{coin.abbreviation}</td>
+                        <td>{parseFloat(coin.price).toFixed(2)}</td>
+                        <td>{getTrend(coin['1d'])}</td>
                     </tr>
                 </tbody>
             )
