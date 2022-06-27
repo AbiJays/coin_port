@@ -38,11 +38,13 @@ const LogicContainer = () => {
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
+
+
             let liveCoinObject = {
                 logo:coin.logo_url,
                 name:coin.name,
                 abbreviation:coin.id,
-                price:coin.price.toFixed(2),
+                price: parseFloat(coin.price).toFixed(2) == '0.00' ? parseFloat(coin.price).toFixed(7) :parseFloat(coin.price).toFixed(2),
                 '1d':coin['1d'] && coin['1d'].price_change_pct,
                 '7d':coin['7d'] && coin['7d'].price_change_pct,
                 '30d':coin['30d'] && coin['30d'].price_change_pct,
@@ -71,19 +73,18 @@ const LogicContainer = () => {
                 if (!(collatedCoinList.includes(transaction.refName))){
                     collatedCoinList.push(transaction.refName)
                     
-                    
                     let coinObject = {
                         logo:liveCoinData[liveIndex].logo,
                         name:transaction.name,
                         abbreviation:transaction.refName,
-                        currentPrice:liveCoinData[liveIndex].price.toFixed(2),
+                        currentPrice:liveCoinData[liveIndex].price,
                         trend:liveCoinData[liveIndex]['1d'],
 
                         portfolioQuantity:parseFloat(transaction.quantity),
                         investmentValue:(parseFloat(transaction.quantity)*parseFloat(liveCoinData[liveIndex].price)).toFixed(2),
     
-                        totalSpend:parseFloat(transaction.quantity)*parseFloat(transaction.price).toFixed(2),
-                        profitAndLoss:(parseFloat(transaction.quantity)*(liveCoinData[liveIndex].price))-parseFloat(transaction.quantity)*parseFloat(transaction.price).toFixed(2)
+                        totalSpend:(parseFloat(transaction.quantity)*parseFloat(transaction.price)).toFixed(2),
+                        profitAndLoss:((parseFloat(transaction.quantity)*(liveCoinData[liveIndex].price))-parseFloat(transaction.quantity)*parseFloat(transaction.price)).toFixed(2)
         
 
                         }
@@ -124,7 +125,7 @@ const LogicContainer = () => {
                 }}))
     .then(res => setPortfolioData(coinDetails))
     }
-    console.log(portfolioData)
+    
     const addTransaction = (transaction) => {
         setPortfolioData([...portfolioData, transaction])
     };
