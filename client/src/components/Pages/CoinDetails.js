@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
 
 
@@ -8,7 +9,9 @@ const CoinDetails = () => {
     <>
         <h1> Choice {slug} </h1>
         <p>You're on page {slug}</p>
-        <GraphCode />
+        <div id="lineChart">
+        < GraphContainer/>
+        </div>
     </>
      );
 }
