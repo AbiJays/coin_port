@@ -58,7 +58,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
 
         // Add transaction to dbdata and display transactions
         // then write routes for editing and deleting
-        // Make sure logic container converst all numbers to integers
+        // Make sure logic container converts all numbers to integers
     }
     
     // Copied over from bird sightings
