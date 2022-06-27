@@ -76,14 +76,16 @@ const LogicContainer = () => {
                         logo:liveCoinData[liveIndex].logo,
                         name:transaction.name,
                         abbreviation:transaction.refName,
-                        // weightedAveragePurchasePrice:[transaction.price],
-                        portfolioQuantity:parseInt(transaction.quantity),
                         currentPrice:liveCoinData[liveIndex].price,
                         trend:liveCoinData[liveIndex]['1d'],
+
+                        portfolioQuantity:parseInt(transaction.quantity),
                         investmentValue:(parseInt(transaction.quantity)*parseInt(liveCoinData[liveIndex].price)),
-                        
-                        totalSpend:parseInt(transaction.quantity)*parseInt(transaction.price)
-                        // totalQuantity:[transaction.quantity]
+    
+                        totalSpend:parseInt(transaction.quantity)*parseInt(transaction.price),
+                        profitAndLoss:(parseInt(transaction.quantity)*(liveCoinData[liveIndex].price))-parseInt(transaction.quantity)*parseInt(transaction.price)
+        
+
                         }
                     
                     coinDetails.push(coinObject)
@@ -95,6 +97,7 @@ const LogicContainer = () => {
                     
                     //Update Quantity, portfolio value & total Spend
                     let newQuantity;
+                    let newTotalSpend;
                     // If transaction type is buy
                     if (transaction.type === 'BUY') {
                         newQuantity = parseInt(coinDetails[index].portfolioQuantity) + parseInt(transaction.quantity)
@@ -102,16 +105,23 @@ const LogicContainer = () => {
                         //Update portfolio value with new quantity
                         coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
                         //Update total spend
-                        coinDetails[index].totalSpend = (parseInt(coinDetails[index].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))}
-                    // If transaction type is sell
-                    else {
-                        newQuantity = parseInt(coinDetails[index].portfolioQuantity) - parseInt(transaction.quantity)
-                        coinDetails[index].portfolioQuantity = newQuantity
-                        //Update portfolio value with new quantity
-                        coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
-                        //Update total spend
-                         coinDetails[index].totalSpend = (parseInt(coinDetails[index].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))}}
-                }))
+                        newTotalSpend  = (parseInt(coinDetails[index].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))
+                        coinDetails[index].totalSpend = newTotalSpend
+                        //Update profit&loss
+                        coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend)}
+                        // If transaction type is sell
+                        else {
+                            newQuantity = parseInt(coinDetails[index].portfolioQuantity) - parseInt(transaction.quantity)
+                            coinDetails[index].portfolioQuantity = newQuantity
+                            //Update portfolio value with new quantity
+                            coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
+                            //Update total spend
+                            newTotalSpend  = (parseInt(coinDetails[index].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))
+                            coinDetails[index].totalSpend = newTotalSpend
+                            //Update profit&loss
+                            coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend)
+                        }
+                }}))
     .then(res => setPortfolioData(coinDetails))
     }
 
