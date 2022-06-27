@@ -1,8 +1,7 @@
-import {Link,useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const NavBar = ({liveCoinData}) => {
-    // const navigate = useNavigate();
-    // const goBack = () => navigate(-1);
+ 
     
     return (
         <ul>
@@ -34,9 +33,7 @@ const NavBar = ({liveCoinData}) => {
             <li>
                 <Link to="/global">Cryptoverse</Link>
             </li>
-            {/* <li>
-                <button onClick={goBack}>Back</button>
-            </li> */}
+    
 
         </ul>
     );
