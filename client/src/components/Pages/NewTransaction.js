@@ -3,7 +3,7 @@ import CurrencyInput from 'react-currency-input-field';
 import TransactionHistory from "./pageComponents/TransactionHistory";
 
 const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
-    console.log(dbData)
+    // console.log('Transaction form', dbData)
     // Form entry
     const [ type, setType] = useState('BUY')
     const [ transactionQuantity, setTransactionQuantity ] = useState()
