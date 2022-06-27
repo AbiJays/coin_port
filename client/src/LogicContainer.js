@@ -37,7 +37,7 @@ const LogicContainer = () => {
         let liveData = []
 
         console.log("Getting Live data")
-        fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
+        fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
             let liveCoinObject = [coin.id,{
