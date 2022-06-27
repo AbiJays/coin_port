@@ -8,9 +8,10 @@ db.transactions.insertMany([
     "logo": "TBC'",
     "quantity": 14,
     "price": 47,
-    "dateTime": "31/01/2022 23:42:12",
+    "dateTime": new Date (),
     "type": "BUY"
-  }//
+  }//,
+  //
   // {
   //   "refName": "BTC",
   //   "name": "Bitcoin",

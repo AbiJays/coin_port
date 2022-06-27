@@ -9,6 +9,7 @@ const createRouter = function (collection) {
   router.get('/', (req, res) => {
     collection
       .find()
+      .sort({dateTime:-1})
       .toArray()
       .then((docs) => res.json(docs))
       .catch((err) => {
