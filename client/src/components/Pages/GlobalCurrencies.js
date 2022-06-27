@@ -1,12 +1,12 @@
 import GlobalCoins from "./pageComponents/GlobalCoins";
 
-const GlobalCurrencies = ({liveCoinData, loaded, hello}) => {
+const GlobalCurrencies = ({liveCoinData, portfolioData, loaded, hello}) => {
 
 
     return (
         <>
             <h1>Available Crypto Currencies</h1>
-            <GlobalCoins liveCoinData={liveCoinData}/>
+            <GlobalCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
         </>
     )
             

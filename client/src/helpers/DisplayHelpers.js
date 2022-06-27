@@ -14,9 +14,21 @@ export const getTrend = (trend) => {
         </span>
     }
 }
-
+// change to .reduce
 export const getPortfolioTotal = (data) => {
     let portfolioTotal = 0
     data.forEach(coin => portfolioTotal += parseFloat(coin[1].investmentValue))
     return portfolioTotal
+}
+
+const checkPortfolioCoin = (data, coin) => {
+    return data.some(portfolioCoin =>(portfolioCoin[0] === coin))
+}
+
+export const portfolioCoinMarker = (data, coin) => {
+    if (checkPortfolioCoin(data, coin) === true) {
+        return <span className={"material-symbols-outlined"} >
+        star
+    </span>
+    }
 }
