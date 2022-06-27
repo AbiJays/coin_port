@@ -15,7 +15,7 @@ const GlobalCoins = ({liveCoinData, portfolioData, hello}) => {
             <div>
                 <table>
                     <thead>
-                        <tr>
+                        <tr id="portfolio-marker">
                             <th>In Portfolio</th>
                             <th>Currency</th>
                             <th></th>
