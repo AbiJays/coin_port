@@ -14,49 +14,46 @@ const LogicContainer = () => {
     const [portfolioData, setPortfolioData] = useState([]);
 
     
-    //Run function on startup
-    let startUpHasRun = false  //Set with an if statement so that useEffect will stop running twice on startup
-    useEffect(() =>{
-        if (startUpHasRun === false) {
-            getLiveCoinData()
-            getPortfolioData()
-            startUpHasRun = true
-        }},[]);
-    ///////////////////////////////////////////API
-    
-    // Refresh price update interval in milliseconds
+   //Set with an if statement so that useEffect will stop running twice on startup
+   useEffect(() =>getLiveCoinData(),[])
+
+   // updates portfolio data every time new live data is available
+   useEffect( () => liveCoinData.length > 0 && getPortfolioData(),[liveCoinData])
+   
+   // Refresh price update interval in milliseconds
     const PriceInterval = 60000  
     //Run function every interval
     useEffect(() => {
         const id = setInterval(() => getLiveCoinData(), PriceInterval)
         return () => clearInterval(id)
-      }, []);
+    }, []);
+    
+    ///////////////////////////////////////////API
+
     //Get data from API 
     const getLiveCoinData = () => {
 
         let liveData = []
 
         console.log("Getting Live data")
-        fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
+        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
             let liveCoinObject = [coin.id,{
-                logo:[coin.logo_url],
-                name:[coin.name],
-                abbreviation:[coin.id],
-                price:[coin.price],
-                '1d':[coin['1d'].price_change_pct],
-                //'7d':[coin['7d'].price_change_pct],
-                '30d':[coin['30d'].price_change_pct],
-                '365d':[coin['365d'].price_change_pct]}]
+                logo:coin.logo_url,
+                name:coin.name,
+                abbreviation:coin.id,
+                price:coin.price,
+                '1d':coin['1d'] && coin['1d'].price_change_pct,
+                '7d':coin['7d'] && coin['7d'].price_change_pct,
+                '30d':coin['30d'] && coin['30d'].price_change_pct,
+                '365d':coin['365d'] && coin['365d'].price_change_pct}]
 
             liveData.push(liveCoinObject)
         })).then(res => setLiveCoinData(liveData))
     }
     ///////////////////////////////////////DATABASE
     
-    // updates portfolio data every time new live data is available
-    useEffect( () => getPortfolioData(),[liveCoinData])
     
     const getPortfolioData = () => {
         
@@ -73,8 +70,7 @@ const LogicContainer = () => {
                     
                     //Find coin index
                     let index = liveCoinData.findIndex((coin) => coin[0] == transaction.refName)
-
-
+                    
                     let coinObject = [transaction.refName,{
                         logo:[liveCoinData[index][1].logo],
                         name:[transaction.name],
@@ -150,7 +146,7 @@ const LogicContainer = () => {
     // useEffect(()=> { 
     //     getCoinData();
     // }, [variable/state]) 
-
+    if (liveCoinData.length > 0 && portfolioData.length > 0) {
     return (
         <>
             <CoinRouter
@@ -161,7 +157,8 @@ const LogicContainer = () => {
             liveCoinData={liveCoinData}
             addTransaction={addTransaction}/>
         </>
-    )
+    )}
+    return <h1>Loading</h1> 
 };
 
 export default LogicContainer;

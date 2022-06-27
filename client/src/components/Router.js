@@ -11,19 +11,17 @@ const CoinRouter = ({hello, coinDataDaily,portfolioData, liveCoinData, addTransa
   return (
     <BrowserRouter>
       <div className='header'>
-        <NavBar liveCoinData={liveCoinData}/>
-        <a href="/">Logout</a>
+       <NavBar liveCoinData={liveCoinData}/>
+       <a href="/">Logout</a>
       </div>
-      <div>
-        <Routes>
-          <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData} />} />
-          <Route path="/myportfolio" element={<MyPortfolio liveCoinData={liveCoinData} portfolioData={portfolioData}/>} />
-          <Route path="/coin/:slug" element={<CoinDetails coinDataDaily={coinDataDaily}/>} />
-          <Route path="/transactionform" element={<TransactionForm coinDataDaily={coinDataDaily} addTransaction={addTransaction}/>} />
-          <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} hello={hello} />} />
-          <Route path="*" element={<ErrorPage />}/>
-        </Routes>
-      </div>
+      <Routes>
+        <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData} />} />
+        <Route path="/myportfolio" element={<MyPortfolio liveCoinData={liveCoinData} portfolioData={portfolioData}/>} />
+        <Route path="/coin/:slug" element={<CoinDetails coinDataDaily={coinDataDaily}/>} />
+        <Route path="/transactionform" element={<TransactionForm portfolioData={portfolioData} liveCoinData={liveCoinData}  addTransaction={addTransaction}/>} />
+        <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} portfolioData={portfolioData} hello={hello} />} />
+        <Route path="*" element={<ErrorPage />}/>
+      </Routes>
     </BrowserRouter>
   );
 

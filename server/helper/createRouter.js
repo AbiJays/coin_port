@@ -31,10 +31,12 @@ const createRouter = function (collection) {
       });
   });
 
-// Create
+// Create new transaction
 
 router.post('/', (req, res) => {
   const newData = req.body;
+  // convert date strings into sortable datetime objects 
+  newData.dateTime = new Date (newData.dateTime)
   collection
   .insertOne(newData)
   .then((result) => {
