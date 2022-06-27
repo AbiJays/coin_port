@@ -46,7 +46,7 @@ const LogicContainer = () => {
                 abbreviation:[coin.id],
                 price:[coin.price],
                 '1d':[coin['1d'].price_change_pct],
-                '7d':[coin['7d'].price_change_pct],
+                // '7d':[coin['7d'].price_change_pct],
                 '30d':[coin['30d'].price_change_pct],
                 '365d':[coin['365d'].price_change_pct]}]
 
@@ -147,13 +147,14 @@ const LogicContainer = () => {
     // useEffect(()=> { 
     //     getCoinData();
     // }, [variable/state]) 
-
+    if (liveCoinData.length > 0 && portfolioData.length > 0) {
     return (
         <>
             <CoinRouter loaded={loaded} hello={hello} dbData={dbData} portfolioData={portfolioData} liveCoinData={liveCoinData}/>
             {/* <GlobalCurrencies coinDataDaily={coinDataDaily} loaded={loaded}/> */}
         </>
-    )
+    )}
+    return <h1>Loading</h1> 
 };
 
 export default LogicContainer;
