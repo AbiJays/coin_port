@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CurrencyInput from 'react-currency-input-field';
+import TransactionHistory from "./pageComponents/TransactionHistory";
 
-const TransactionForm = ({liveCoinData , portfolioData}) => {
-    
+const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
+    console.log(dbData)
     // Form entry
     const [ type, setType] = useState('BUY')
     const [ transactionQuantity, setTransactionQuantity ] = useState()
@@ -186,7 +187,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
             </table>
         </form>
 
-
+        <TransactionHistory dbData={dbData}/>
         {/* <form className="transaction-form" onSubmit={handleTransactionSubmit} >
         </form> */}
         </>
