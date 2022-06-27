@@ -46,7 +46,11 @@ const LogicContainer = () => {
                 abbreviation:[coin.id],
                 price:[coin.price],
                 '1d':[coin['1d'].price_change_pct],
+<<<<<<< HEAD
                 // '7d':[coin['7d'].price_change_pct],
+=======
+                //'7d':[coin['7d'].price_change_pct],
+>>>>>>> develop
                 '30d':[coin['30d'].price_change_pct],
                 '365d':[coin['365d'].price_change_pct]}]
 
