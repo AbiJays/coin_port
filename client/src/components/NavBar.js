@@ -1,8 +1,7 @@
-import {Link,useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const NavBar = ({liveCoinData}) => {
-    // const navigate = useNavigate();
-    // const goBack = () => navigate(-1);
+ 
     
     return (
         <ul>
@@ -18,7 +17,7 @@ const NavBar = ({liveCoinData}) => {
                     {liveCoinData.map(coin => {
                         return (
                             <li>
-                                <Link to={`/coin/:${coin[1].name}`}>{coin[1].name}</Link>
+                                <Link to={`/coin/:${coin.name}`}>{coin.name}</Link>
                             </li>
                             )
 
@@ -34,9 +33,7 @@ const NavBar = ({liveCoinData}) => {
             <li>
                 <Link to="/global">Cryptoverse</Link>
             </li>
-            {/* <li>
-                <button onClick={goBack}>Back</button>
-            </li> */}
+    
 
         </ul>
     );

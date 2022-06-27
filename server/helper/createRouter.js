@@ -9,6 +9,7 @@ const createRouter = function (collection) {
   router.get('/', (req, res) => {
     collection
       .find()
+      .sort({dateTime:-1})
       .toArray()
       .then((docs) => res.json(docs))
       .catch((err) => {
@@ -31,10 +32,12 @@ const createRouter = function (collection) {
       });
   });
 
-// Create
+// Create new transaction
 
 router.post('/', (req, res) => {
   const newData = req.body;
+  // convert date strings into sortable datetime objects 
+  newData.dateTime = new Date (newData.dateTime)
   collection
   .insertOne(newData)
   .then((result) => {
