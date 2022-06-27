@@ -42,7 +42,7 @@ const LogicContainer = () => {
                 logo:coin.logo_url,
                 name:coin.name,
                 abbreviation:coin.id,
-                price:coin.price,
+                price:coin.price.toFixed(2),
                 '1d':coin['1d'] && coin['1d'].price_change_pct,
                 '7d':coin['7d'] && coin['7d'].price_change_pct,
                 '30d':coin['30d'] && coin['30d'].price_change_pct,
@@ -76,14 +76,14 @@ const LogicContainer = () => {
                         logo:liveCoinData[liveIndex].logo,
                         name:transaction.name,
                         abbreviation:transaction.refName,
-                        currentPrice:liveCoinData[liveIndex].price,
+                        currentPrice:liveCoinData[liveIndex].price.toFixed(2),
                         trend:liveCoinData[liveIndex]['1d'],
 
-                        portfolioQuantity:parseInt(transaction.quantity),
-                        investmentValue:(parseInt(transaction.quantity)*parseInt(liveCoinData[liveIndex].price)),
+                        portfolioQuantity:parseFloat(transaction.quantity),
+                        investmentValue:(parseFloat(transaction.quantity)*parseFloat(liveCoinData[liveIndex].price)).toFixed(2),
     
-                        totalSpend:parseInt(transaction.quantity)*parseInt(transaction.price),
-                        profitAndLoss:(parseInt(transaction.quantity)*(liveCoinData[liveIndex].price))-parseInt(transaction.quantity)*parseInt(transaction.price)
+                        totalSpend:parseFloat(transaction.quantity)*parseFloat(transaction.price).toFixed(2),
+                        profitAndLoss:(parseFloat(transaction.quantity)*(liveCoinData[liveIndex].price))-parseFloat(transaction.quantity)*parseFloat(transaction.price).toFixed(2)
         
 
                         }
@@ -100,31 +100,31 @@ const LogicContainer = () => {
                     let newTotalSpend;
                     // If transaction type is buy
                     if (transaction.type === 'BUY') {
-                        newQuantity = parseInt(coinDetails[index].portfolioQuantity) + parseInt(transaction.quantity)
+                        newQuantity = parseFloat(coinDetails[index].portfolioQuantity) + parseFloat(transaction.quantity)
                         coinDetails[index].portfolioQuantity = newQuantity
                         //Update portfolio value with new quantity
-                        coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
+                        coinDetails[index].investmentValue = (newQuantity*(parseFloat(liveCoinData[liveIndex].price))).toFixed(2)
                         //Update total spend
-                        newTotalSpend  = (parseInt(coinDetails[index].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))
-                        coinDetails[index].totalSpend = newTotalSpend
+                        newTotalSpend  = (parseFloat(coinDetails[index].totalSpend) + (parseFloat(transaction.quantity)*parseFloat(transaction.price)))
+                        coinDetails[index].totalSpend = newTotalSpend.toFixed(2)
                         //Update profit&loss
-                        coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend)}
+                        coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend).toFixed(2)}
                         // If transaction type is sell
                         else {
-                            newQuantity = parseInt(coinDetails[index].portfolioQuantity) - parseInt(transaction.quantity)
+                            newQuantity = parseFloat(coinDetails[index].portfolioQuantity) - parseFloat(transaction.quantity)
                             coinDetails[index].portfolioQuantity = newQuantity
                             //Update portfolio value with new quantity
-                            coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
+                            coinDetails[index].investmentValue = (newQuantity*(parseFloat(liveCoinData[liveIndex].price))).toFixed(2)
                             //Update total spend
-                            newTotalSpend  = (parseInt(coinDetails[index].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))
-                            coinDetails[index].totalSpend = newTotalSpend
+                            newTotalSpend  = (parseFloat(coinDetails[index].totalSpend) - (parseFloat(transaction.quantity)*parseFloat(transaction.price)))
+                            coinDetails[index].totalSpend = newTotalSpend.toFixed(2)
                             //Update profit&loss
-                            coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend)
+                            coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend).toFixed(2)
                         }
                 }}))
     .then(res => setPortfolioData(coinDetails))
     }
-
+    console.log(portfolioData)
     const addTransaction = (transaction) => {
         setPortfolioData([...portfolioData, transaction])
     };
