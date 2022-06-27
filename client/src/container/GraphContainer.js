@@ -50,7 +50,6 @@ const GraphContainer = () => {
         "color": color,
         "data": data.slice(0,9)
     }]
-    console.log(formattedCloseData)
 
     return ( 
         <>
