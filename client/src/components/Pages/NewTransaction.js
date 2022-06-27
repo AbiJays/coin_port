@@ -47,12 +47,12 @@ const TransactionForm = (addTransaction) => {
         setFormData(formData);
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        postTransaction(formData).then(() => {
-            addTransaction(formData);
-        })
-    }
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+    //     postTransaction(formData).then(() => {
+    //         addTransaction(formData);
+    //     })
+    // }
 
 
     
