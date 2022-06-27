@@ -46,6 +46,14 @@ code {
   width: auto;
 }
 
+tbody {
+  text-align: center;
+}
+
+tbody>tr>:nth-child(1) {
+  text-align: left;
+}
+
 .trend-up {
   color: green;
 }
