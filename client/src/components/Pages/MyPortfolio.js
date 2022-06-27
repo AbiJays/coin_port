@@ -10,7 +10,7 @@ const MyPortfolio = ({liveCoinData, portfolioData}) => {
         <>
         <PortfolioTotal portfolioData={portfolioData}/>
         <PortfolioCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
-        <TransactionForm/>
+        <TransactionForm liveCoinData={liveCoinData} portfolioData={portfolioData}/>
         </> 
      );
 }
