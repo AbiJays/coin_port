@@ -38,7 +38,7 @@ const LogicContainer = () => {
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
-            let liveCoinObject = [coin.id,{
+            let liveCoinObject = {
                 logo:coin.logo_url,
                 name:coin.name,
                 abbreviation:coin.id,
@@ -46,7 +46,7 @@ const LogicContainer = () => {
                 '1d':coin['1d'] && coin['1d'].price_change_pct,
                 '7d':coin['7d'] && coin['7d'].price_change_pct,
                 '30d':coin['30d'] && coin['30d'].price_change_pct,
-                '365d':coin['365d'] && coin['365d'].price_change_pct}]
+                '365d':coin['365d'] && coin['365d'].price_change_pct}
 
             liveData.push(liveCoinObject)
         })).then(res => setLiveCoinData(liveData))
@@ -64,51 +64,53 @@ const LogicContainer = () => {
             .then(res => res.json())
             .then(transactions => transactions.forEach( transaction => {
                 setDbData(transactions)
+                
+                //Find coin index in live data
+                 let liveIndex = liveCoinData.findIndex((coin) => coin.abbreviation == transaction.refName)
+                
                 if (!(collatedCoinList.includes(transaction.refName))){
                     collatedCoinList.push(transaction.refName)
                     
-                    //Find coin index
-                    let index = liveCoinData.findIndex((coin) => coin[0] == transaction.refName)
                     
-                    let coinObject = [transaction.refName,{
-                        logo:[liveCoinData[index][1].logo],
-                        name:[transaction.name],
-                        abbreviation:[transaction.refName],
+                    let coinObject = {
+                        logo:liveCoinData[liveIndex].logo,
+                        name:transaction.name,
+                        abbreviation:transaction.refName,
                         // weightedAveragePurchasePrice:[transaction.price],
-                        portfolioQuantity:[transaction.quantity],
-                        currentPrice:[liveCoinData[index][1].price],
-                        trend:[liveCoinData[index][1]['1d']],
-                        investmentValue:[parseInt(transaction.quantity)*parseInt(liveCoinData[index][1].price)],
+                        portfolioQuantity:parseInt(transaction.quantity),
+                        currentPrice:liveCoinData[liveIndex].price,
+                        trend:liveCoinData[liveIndex]['1d'],
+                        investmentValue:(parseInt(transaction.quantity)*parseInt(liveCoinData[liveIndex].price)),
                         
-                        totalSpend:[parseInt(transaction.quantity)*parseInt(transaction.price)]
+                        totalSpend:parseInt(transaction.quantity)*parseInt(transaction.price)
                         // totalQuantity:[transaction.quantity]
                         }
-                    ]
+                    
                     coinDetails.push(coinObject)
                 }
                 // Coin already in list
                 else {
-                    // find coin index in coinDetails
-                    let index = coinDetails.findIndex((coin) => coin[0] == transaction.refName)
-                   
+
+                    let index = coinDetails.findIndex((coin) => coin.abbreviation == transaction.refName)
+                    
                     //Update Quantity, portfolio value & total Spend
                     let newQuantity;
                     // If transaction type is buy
                     if (transaction.type === 'BUY') {
-                        newQuantity = parseInt(coinDetails[index][1].portfolioQuantity) + parseInt(transaction.quantity)
-                        coinDetails[index][1].portfolioQuantity = newQuantity
+                        newQuantity = parseInt(coinDetails[index].portfolioQuantity) + parseInt(transaction.quantity)
+                        coinDetails[index].portfolioQuantity = newQuantity
                         //Update portfolio value with new quantity
-                        coinDetails[index][1].investmentValue = (newQuantity*parseInt(liveCoinData[index][1].price))
+                        coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
                         //Update total spend
-                        coinDetails[index][1].totalSpend = (parseInt(coinDetails[index][1].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))}
+                        coinDetails[index].totalSpend = (parseInt(coinDetails[index].totalSpend) + (parseInt(transaction.quantity)*parseInt(transaction.price)))}
                     // If transaction type is sell
                     else {
-                        newQuantity = parseInt(coinDetails[index][1].portfolioQuantity) - parseInt(transaction.quantity)
-                        coinDetails[index][1].portfolioQuantity = newQuantity
+                        newQuantity = parseInt(coinDetails[index].portfolioQuantity) - parseInt(transaction.quantity)
+                        coinDetails[index].portfolioQuantity = newQuantity
                         //Update portfolio value with new quantity
-                        coinDetails[index][1].investmentValue = (newQuantity*parseInt(liveCoinData[index][1].price))
+                        coinDetails[index].investmentValue = (newQuantity*(parseInt(liveCoinData[liveIndex].price)))
                         //Update total spend
-                         coinDetails[index][1].totalSpend = (parseInt(coinDetails[index][1].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))}}
+                         coinDetails[index].totalSpend = (parseInt(coinDetails[index].totalSpend) - (parseInt(transaction.quantity)*parseInt(transaction.price)))}}
                 }))
     .then(res => setPortfolioData(coinDetails))
     }

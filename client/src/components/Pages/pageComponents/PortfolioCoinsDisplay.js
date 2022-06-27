@@ -13,15 +13,15 @@ const PortfolioCoinsDisplay = ({portfolioData}) => {
 
         return (
             <tbody>
-                <tr>
-                    <td><a href={"http://localhost:3000/coin/" + coin[1].name}>{coin[1].name}</a></td>
-                    <td><img src={coin[1].logo} alt={coin[1].name + "logo"} className="logo" /></td>
-                    <td>{coin[1].abbreviation}</td>
-                    <td>{coin[1].portfolioQuantity}</td>
+                <tr key={coin.abbreviation}>
+                    <td><a href={"http://localhost:3000/coin/" + coin.name}>{coin.name}</a></td>
+                    <td><img src={coin.logo} alt={coin.abbreviation + "logo"} className="logo" /></td>
+                    <td>{coin.abbreviation}</td>
+                    <td>{coin.portfolioQuantity}</td>
                     <td></td>
-                    <td>{parseFloat(coin[1].currentPrice).toFixed(3)}</td>
-                    <td>{coin[1].investmentValue}</td>
-                    <td>{getTrend(coin[1].trend)}</td>
+                    <td>{parseFloat(coin.currentPrice).toFixed(3)}</td>
+                    <td>{coin.investmentValue}</td>
+                    <td>{getTrend(coin.trend)}</td>
                 </tr>
             </tbody>
     

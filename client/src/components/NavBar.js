@@ -17,7 +17,7 @@ const NavBar = ({liveCoinData}) => {
                     {liveCoinData.map(coin => {
                         return (
                             <li>
-                                <Link to={`/coin/:${coin[1].name}`}>{coin[1].name}</Link>
+                                <Link to={`/coin/:${coin.name}`}>{coin.name}</Link>
                             </li>
                             )
 
