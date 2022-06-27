@@ -39,7 +39,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
     // data to be sent to the db
     const payload = {
         refName:coin,
-        name:liveCoinData[coinIndex][1].name[0],
+        name:liveCoinData[coinIndex][1].name,
         logo:"TBC",
         quantity:transactionQuantity,
         "price":price,
@@ -116,7 +116,7 @@ const TransactionForm = ({liveCoinData , portfolioData}) => {
             return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
         }
             else {
-            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex][1].investmentValue} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
+            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex][1].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
         }}  
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {

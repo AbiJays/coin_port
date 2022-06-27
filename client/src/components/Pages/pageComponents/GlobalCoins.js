@@ -1,6 +1,6 @@
 import GlobalCoinsDisplay from "./GlobalCoinsDisplay"
 
-const GlobalCoins = ({liveCoinData, hello}) => {
+const GlobalCoins = ({liveCoinData, portfolioData, hello}) => {
 
     if (liveCoinData.length === 0) {
         return (
@@ -16,6 +16,7 @@ const GlobalCoins = ({liveCoinData, hello}) => {
                 <table>
                     <thead>
                         <tr>
+                            <th>In Portfolio</th>
                             <th>Currency</th>
                             <th></th>
                             <th></th>
@@ -23,7 +24,7 @@ const GlobalCoins = ({liveCoinData, hello}) => {
                             <th>Current Trend</th>
                         </tr>
                     </thead>
-                    <GlobalCoinsDisplay liveCoinData={liveCoinData}/>
+                    <GlobalCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>
                 </table>
             </div>
         )
