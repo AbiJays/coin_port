@@ -1,8 +1,17 @@
 import React from "react";
 import GraphSelector from "../components/GraphSelector";
 import GraphDetails from "../components/GraphDetails";
+import GraphCode from "../components/Pages/pageComponents/GraphCode";
 
 const GraphContainer = () => {
+
+    const [coins, setCoins] = useState(["BTC", "ETH"]);
+    const [coinDataDaily, setCoinDataDaily] = useState([])
+    const [coinData5Min, setCoinData5Min] = useState([])
+
+    useEffect(()=> {
+        getCoinData();
+    }, []) 
 
     const getCoinData = () => {
         console.log("Getting 5 min coin data");
@@ -21,26 +30,29 @@ const GraphContainer = () => {
             setCoinDataDaily(combinedData);
         })
         .then(setLoaded(true));
-
     }
+    
+    const data = combinedData.map((date) => {
+        return {
+            "x": date,
+            "Y": parseFloat(combinedData["Time Series (Digital Currency Daily)"][date]["4a. close (GBP)"])
+        }
+    })
 
-    useEffect(()=> {
-    getCoinData();
-    }, []) 
+    const id = combinedData["Meta Data"]["3. Digital Currency Name"];
+    const color = hsl(240, 20%, 50%);
+
+    const formattedCloseData = [{
+        "id": id,
+        "color": color,
+        "data": data
+    }]
 
     return ( 
-        <h1>I'm a GraphContainer</h1>
+        <>
+        <GraphCode data = {formattedCloseData} />
+        </>
      );
 
 }
- 
 export default GraphContainer;
-
-
-
-
-
-    // latest coin values
-    // useEffect(()=> { 
-    //     getCoinData();
-    // }, [variable/state]) 
