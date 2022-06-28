@@ -101,17 +101,17 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     // Display available coins to buy and sell
     const CoinOptions = () => {
         // Take the names of the first 25 coins from the live feed
-        const liveCoinList = liveCoinData.slice(0,24).map(coinName => coinName.abbreviation)
+        const liveCoinIds = liveCoinData.slice(0,24).map(coin => coin.abbreviation)
         // Take the names of all the coins in our portfolio
-        const portfolioCoinList = portfolioData.map(coinName=>coinName.abbreviation)
-        // Return an array of the unique values from both lists
-        const coinList = liveCoinList.concat(portfolioCoinList.filter(coinName =>liveCoinList.indexOf(coinName) < 0))
-        if (type === 'BUY') {
-            return coinList.map(option => <option key={option} value = {option}> {option}</option>)
-        }
-        else {
-            return portfolioCoinList.map(option=> <option key={option} value={option}> {option}</option>)
-        }}
+        const portfolioCoinIds = portfolioData.map(coin => coin.abbreviation)
+        // Use combined list if BUYing, use portfolio list if SELLing
+        const coinIds = type === 'BUY' ?
+                        liveCoinIds.concat(portfolioCoinIds.filter(coin => liveCoinIds.indexOf(coin) < 0)) :
+                        portfolioCoinIds
+
+        return coinIds.map(id => <option key={id} value = {id}> {id}</option>)
+    }
+
         // Change the behaviour of the max quantity so you cant sell more than you have
     const QuantityInput = () => {
         if (type === 'BUY') {
