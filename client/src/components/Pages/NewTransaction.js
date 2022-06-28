@@ -41,7 +41,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     const payload = {
         refName:coin,
         name:liveCoinData[coinIndex].name,
-        logo:"TBC",
+        logo:liveCoinData[coinIndex].logo,
         quantity:transactionQuantity,
         "price":price,
         "dateTime":dateTime,
@@ -167,8 +167,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
                             <p>{liveCoinData[coinIndex].name}</p>
                         </td>
                         <td>
-                        {/* <p>{liveCoinData[coinIndex].logo}</p> */}
-                        <p>logo</p>
+                        <img src={liveCoinData[coinIndex].logo} alt={liveCoinData[coinIndex].name + "logo"} className="logo" />
                         </td>
                         <td>
                             <p>{coin}</p>

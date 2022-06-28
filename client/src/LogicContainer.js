@@ -128,17 +128,9 @@ const LogicContainer = () => {
                 }}))
     .then(res => setPortfolioData(coinDetails))
     }
-<<<<<<< HEAD
     
     const addTransaction = () => {
         getLiveCoinData()
-=======
-
-   
-
-    const addTransaction = (transaction) => {
-        setPortfolioData([...portfolioData, transaction])
->>>>>>> origin/develop
     };
 
     // const getCoinData = () => {
