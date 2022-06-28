@@ -16,7 +16,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     // Event handlers for filling out form
     const handleTransactionQuantityChange = event => setTransactionQuantity(event.target.value)
     const handleDateTimeChange = event => setDateTime(event.target.value)
-    const handlePriceChange = event => setPrice(event.target.value)
+    const handlePriceChange = (value) => setPrice(value)
     const handleCoinChange = event => coinChange(event.target.value)
     const handleMaxClick = event => setTransactionQuantity(portfolioData[portfolioIndex].portfolioQuantity)
     const handleTypeChange = event => {
@@ -176,7 +176,8 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
                             </td>
                         }
                         <td>
-                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} required/>
+                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2}
+                             value={price} onValueChange={handlePriceChange} required/>
                         </td>
                         <td>
                             <CurrencyInput id="totalValue" placeholder="totalValue" decimalsLimit={2} value={isNaN(transactionQuantity*price)? 0 : transactionQuantity*price} readOnly/>
