@@ -72,7 +72,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                     {/* <a href="http://localhost:3000/coin/BTC">Back to Bitcoin</a> */}
                 
                     <select onChange={handleCoinSubmit}>
-                        <option >View coin:</option>
+                        <option >View a different coin:</option>
                         {coinOptions}
                     </select>
                 </>
@@ -108,7 +108,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                     <div className="coin-detail-title-container">
                         <h4>{coinName}'s current market behaviour:</h4>
                         <select onChange={handleCoinSubmit}>
-                            <option >View coin:</option>
+                            <option >View a different coin:</option>
                             {coinOptions}
                         </select>
                     </div>
