@@ -18,6 +18,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     const handleDateTimeChange = event => setDateTime(event.target.value)
     const handlePriceChange = event => setPrice(event.target.value)
     const handleCoinChange = event => coinChange(event.target.value)
+    const handleMaxClick = event => setTransactionQuantity(portfolioData[portfolioIndex].portfolioQuantity)
     const handleTypeChange = event => {
         let newType = event.target.value      
         setType(newType)
@@ -168,6 +169,12 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
                         <td>
                             <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {type === 'BUY' ? null : portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
                         </td>
+                        {   
+                            type === 'SELL' &&  
+                            <td>
+                                <button name="MAX" id="MAX" onClick={handleMaxClick}>Max</button>
+                            </td>
+                        }
                         <td>
                             <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} required/>
                         </td>
