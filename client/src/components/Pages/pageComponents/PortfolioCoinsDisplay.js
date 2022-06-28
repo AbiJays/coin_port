@@ -14,9 +14,8 @@ const PortfolioCoinsDisplay = ({portfolioData}) => {
 
         return (
             <>
-                <tr key={coin.abbreviation}>
-                    <SingleCoinDisplay coin={coin}/>
-                </tr>
+                    <SingleCoinDisplay key={coin.abbreviation} coin={coin}/>
+                
             </>
     
             )

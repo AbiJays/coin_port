@@ -1,8 +1,8 @@
 import TransactionDisplay from "./TransactionDisplay";
 
-const TransactionHistory = ({dbData}) => {
+const TransactionHistory = ({transactions}) => {
     // console.log(dbData);
-    if (dbData.length === 0) {
+    if (transactions.length === 0) {
         return <p>Loading...</p>
     }
 
@@ -23,7 +23,7 @@ const TransactionHistory = ({dbData}) => {
                 </tr>
             </thead>
 
-            <TransactionDisplay dbData={dbData} />
+            <TransactionDisplay transactions={transactions} />
             {/* <PortfolioCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>     */}
 
 

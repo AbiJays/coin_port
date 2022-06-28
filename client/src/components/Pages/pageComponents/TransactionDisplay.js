@@ -1,6 +1,6 @@
-const TransactionDisplay = ({dbData}) => {
+const TransactionDisplay = ({transactions}) => {
     
-    const transactionHistoryDisplay = dbData.map(coin => {
+    const transactionHistoryDisplay = transactions.map(coin => {
         return (
             <tbody>
                         <tr>

@@ -17,8 +17,9 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     // Event handlers for filling out form
     const handleTransactionQuantityChange = event => setTransactionQuantity(event.target.value)
     const handleDateTimeChange = event => setDateTime(event.target.value)
-    const handlePriceChange = event => setPrice((event.target.value))
+    const handlePriceChange = (value) => setPrice(value)
     const handleCoinChange = event => coinChange(event.target.value)
+    const handleMaxClick = event => setTransactionQuantity(portfolioData[portfolioIndex].portfolioQuantity)
     const handleTypeChange = event => {
         let newType = event.target.value
         setType(newType)
@@ -102,25 +103,18 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     // Display available coins to buy and sell
     const CoinOptions = () => {
         // Take the names of the first 25 coins from the live feed
-        const liveCoinList = liveCoinData.slice(0,24).map(coinName => coinName.abbreviation)
+        const liveCoinIds = liveCoinData.slice(0,24).map(coin => coin.abbreviation)
         // Take the names of all the coins in our portfolio
-        const portfolioCoinList = portfolioData.map(coinName=>coinName.abbreviation)
-        // Return an array of the unique values from both lists
-        const coinList = liveCoinList.concat(portfolioCoinList.filter(coinName =>liveCoinList.indexOf(coinName) < 0))
-        if (type === 'BUY') {
-            return coinList.map(option => <option key={option} value = {option}> {option}</option>)
-        }
-        else {
-            return portfolioCoinList.map(option=> <option key={option} value={option}> {option}</option>)
-        }}
-        // Change the behaviour of the max quantity so you cant sell more than you have
-    const QuantityInput = () => {
-        if (type === 'BUY') {
-            return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
-        }
-            else {
-            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
-        }}  
+        const portfolioCoinIds = portfolioData.map(coin => coin.abbreviation)
+        // Use combined list if BUYing, use portfolio list if SELLing
+        const coinIds = type === 'BUY' ?
+                        liveCoinIds.concat(portfolioCoinIds.filter(coin => liveCoinIds.indexOf(coin) < 0)) :
+                        portfolioCoinIds
+
+        return coinIds.map(id => <option key={id} value = {id}> {id}</option>)
+    }
+
+ 
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {
         if (portfolioData.length > 0) {
@@ -138,7 +132,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     return (
         <>
         <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
-        <h1>Log a New Transaction</h1>
+        <h2>Log a New Transaction</h2>
 
         <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
         <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>
@@ -175,10 +169,17 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
                             <p>{coin}</p>
                         </td>
                         <td>
-                            <QuantityInput></QuantityInput >
+                            <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {type === 'BUY' ? null : portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
                         </td>
+                        {   
+                            type === 'SELL' &&  
+                            <td>
+                                <button name="MAX" id="MAX" onClick={handleMaxClick}>Max</button>
+                            </td>
+                        }
                         <td>
-                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} required/>
+                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2}
+                             value={price} onValueChange={handlePriceChange} required/>
                         </td>
                         <td>
                             <CurrencyInput id="totalValue" placeholder="totalValue" decimalsLimit={2} value={isNaN(transactionQuantity*price)? 0 : transactionQuantity*price} readOnly/>
@@ -191,7 +192,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
             </table>
         </form>
 
-        <TransactionHistory dbData={dbData}/>
+        <TransactionHistory transactions={dbData}/>
         {/* <form className="transaction-form" onSubmit={handleTransactionSubmit} >
         </form> */}
         </>

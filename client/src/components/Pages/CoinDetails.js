@@ -2,7 +2,6 @@ import { useParams,useLocation } from "react-router-dom";
 import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
 import { useEffect, useState } from "react";
-import { getCoinPortfolioData } from "../../helpers/CoinFilters";
 import SingleCoinDisplay from "./pageComponents/SingleCoinDisplay";
 
 
@@ -10,6 +9,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
     const { slug }  = useParams()
 
     const [selectedCoinData, setSelectedCoinData] = useState({})
+    const [coinTransactions, setCoinTransactions] = useState([])
 
     const selectedCoin = slug;
     // console.log('slug:', slug)
@@ -17,8 +17,8 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
 
     useEffect(()=> {
         getCoinData();
-    }, []) 
-
+        getCoinPortfolioData();
+    }, [])
 
     const getCoinData = () => {
         console.log("Getting slug data");
@@ -38,6 +38,10 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
         })
         }
 
+        const getCoinPortfolioData = () => {
+            fetch(`http://localhost:5000/api/coins/${selectedCoin}`)
+                    .then(res => res.json())
+                    .then(transactions => setCoinTransactions(transactions))}
 
         if (!selectedCoinData || Object.keys(selectedCoinData).length === 0) {
             return <p>Loading</p>
@@ -117,6 +121,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                     <option >View coin:</option>
                     {coinOptions}
                 </select>
+                <TransactionHistory transactions={coinTransactions}></TransactionHistory>
             </>
             )
         }
