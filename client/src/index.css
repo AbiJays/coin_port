@@ -157,3 +157,9 @@ tbody {
   text-align: left;
 }
 
+.coin-detail-title-container {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+}
+

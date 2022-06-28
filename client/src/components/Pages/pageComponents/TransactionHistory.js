@@ -1,9 +1,9 @@
 import TransactionDisplay from "./TransactionDisplay";
 
-const TransactionHistory = ({transactions}) => {
+const TransactionHistory = ({transactions, coinName, slug}) => {
     // console.log(dbData);
     if (transactions.length === 0) {
-        return <p>Loading...</p>
+        return <a href={"http://localhost:3000/transactionform"}><p>Click to add a transaction for {coinName}.</p></a>
     }
 
 

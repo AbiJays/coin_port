@@ -44,6 +44,22 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                     .then(res => res.json())
                     .then(transactions => setCoinTransactions(transactions))}
 
+           
+                    
+        const coinOptions = liveCoinData.map(coin => {
+            return (
+                <option key={coin.abbreviation}>{coin.name}</option>
+            )
+        })
+
+        const getCoinByName = (selectedName) => liveCoinData.find(coin => coin.name === selectedName)
+
+        const handleCoinSubmit = (e) => {
+            console.log(e.target.value)
+            // const newCoin = getCoinByName(e.target.value).abbreviation
+            window.location.href = `http://localhost:3000/coin/${getCoinByName(e.target.value).abbreviation}`
+        }
+
         if (!selectedCoinData || Object.keys(selectedCoinData).length === 0) {
             return <p>Loading</p>
         }
@@ -53,7 +69,12 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
             return (
                 <>
                     <p>Sorry, we don't have data for that today...</p>
-                    <a href="http://localhost:3000/coin/BTC">Back to Bitcoin</a>
+                    {/* <a href="http://localhost:3000/coin/BTC">Back to Bitcoin</a> */}
+                
+                    <select onChange={handleCoinSubmit}>
+                        <option >View coin:</option>
+                        {coinOptions}
+                    </select>
                 </>
             )
         }
@@ -76,19 +97,22 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 )
             })
 
-            const getCoinByName = (selectedName) => liveCoinData.find(coin => coin.name === selectedName)
 
-            const handleCoinSubmit = (e) => {
-                console.log(e.target.value)
-                // const newCoin = getCoinByName(e.target.value).abbreviation
-                window.location.href = `http://localhost:3000/coin/${getCoinByName(e.target.value).abbreviation}`
-            }
 
             return (
                 <>
                 <h1>{coinName} </h1>
+
                 <div>
-                    <h4>{coinName}'s current market behaviour:</h4>
+
+                    <div className="coin-detail-title-container">
+                        <h4>{coinName}'s current market behaviour:</h4>
+                        <select onChange={handleCoinSubmit}>
+                            <option >View coin:</option>
+                            {coinOptions}
+                        </select>
+                    </div>
+
                     <div id="lineChart">
                     < GraphContainer slug={slug} selectedCoin={selectedCoin} selectedCoinData={selectedCoinData}/>
                     </div>
@@ -116,13 +140,9 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 </table>
                 }
 
+                <a href={"http://localhost:3000/transactionform"}><p>Click to add a transaction for {coinName}.</p></a>
 
-                <select onChange={handleCoinSubmit}>
-                    
-                    <option >View coin:</option>
-                    {coinOptions}
-                </select>
-                <TransactionHistory transactions={coinTransactions}></TransactionHistory>
+                <TransactionHistory transactions={coinTransactions} coinName={coinName}></TransactionHistory>
             </>
             )
         }
