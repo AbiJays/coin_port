@@ -17,7 +17,7 @@ const PortfolioCoins = ({liveCoinData, portfolioData}) => {
                     <table>
                         <thead>
                         <tr>
-                            <th colspan="2">Currency</th>
+                            <th colSpan="2">Currency</th>
                             <th>Quantity</th>
                             <th>Current Global Price (£)</th>
                             <th>Investment Value (£)</th>

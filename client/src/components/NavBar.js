@@ -2,7 +2,8 @@ import {Link} from "react-router-dom";
 
 const NavBar = ({liveCoinData}) => {
  
-    
+    // console.log('navbar', loginStatus)
+
     return (
         <ul>
             {/* <li>
@@ -38,6 +39,7 @@ const NavBar = ({liveCoinData}) => {
         </ul>
     );
 }
+
 export default NavBar;
 
 

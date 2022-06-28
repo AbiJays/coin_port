@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import GlobalCurrencies from "./components/Pages/GlobalCurrencies";
 import CoinRouter from "./components/Router";
 
@@ -12,6 +13,13 @@ const LogicContainer = () => {
     // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
+    const [loginStatus, setLoginStatus] = useState(false)
+    const [usernameAttempt, setUsernameAttempt] = useState("");
+    const [passwordAttempt, setPasswordAttempt] = useState("");
+    const loginDetails = {
+        username: 'a',
+        password: 'b'
+    }
 
     
    //Set with an if statement so that useEffect will stop running twice on startup
@@ -36,7 +44,7 @@ const LogicContainer = () => {
         let liveData = []
 
         console.log("Getting Live data")
-        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
+        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
 
@@ -133,6 +141,31 @@ const LogicContainer = () => {
         getLiveCoinData()
     };
 
+
+    const getUsernameAttempt = (e) => {
+        setUsernameAttempt(e.target.value);
+        setLoginStatus(false);
+    }
+
+    const getPasswordAttempt = (e) => {
+        setPasswordAttempt(e.target.value);
+        setLoginStatus(false);
+    }
+
+    const handleLoginAttempt = (e) => {
+
+        if (usernameAttempt === loginDetails.username && passwordAttempt === loginDetails.password) {
+            setLoginStatus(true);
+        }
+        return (usernameAttempt !== loginDetails.username || passwordAttempt !== loginDetails.password) ? false : true;
+
+  
+    }
+
+    useEffect(() => {
+        console.log('unmounted')
+    }, [loginStatus])
+
     // const getCoinData = () => {
     //     console.log("Getting 5 min coin data");
         // const coinPromises = coins.map((coin) => {
@@ -171,6 +204,10 @@ const LogicContainer = () => {
             portfolioData={portfolioData}
             liveCoinData={liveCoinData}
             addTransaction={addTransaction}
+            getUsernameAttempt={getUsernameAttempt}
+            getPasswordAttempt={getPasswordAttempt}
+            handleLoginAttempt={handleLoginAttempt}
+            loginStatus={loginStatus}
             />
         </>
     )}

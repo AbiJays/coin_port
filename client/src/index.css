@@ -95,6 +95,15 @@ span.brandName {
   background: rgb(216, 214, 205);
 }
 
+#login-warning-text {
+  max-width: 300px;
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+  color: rgba(255, 0, 0, 0.576);
+  font-size: 14px;
+}
+
 .portfolio-total {
   color: rgb(236, 76, 52);
 }
