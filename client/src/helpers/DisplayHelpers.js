@@ -18,7 +18,12 @@ export const getTrend = (trend) => {
 export const getPortfolioTotal = (data) => {
     let portfolioTotal = 0
     data.forEach(coin => portfolioTotal += parseFloat(coin.investmentValue))
-    return portfolioTotal
+    return portfolioTotal.toFixed(2)
+}
+export const getProfitAndLossTotal = (data) => {
+    let profitAndLossTotal = 0
+    data.forEach(coin => profitAndLossTotal += parseFloat(coin.profitAndLoss))
+    return profitAndLossTotal.toFixed(2)
 }
 
 const checkPortfolioCoin = (data, coin) => {
