@@ -9,7 +9,7 @@ const GlobalCoinsDisplay = ({liveCoinData, portfolioData}) => {
 
     
             return (
-                <tbody>
+                
                     <tr>
                         <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{portfolioCoinMarker(portfolioData, coin.abbreviation)}</a></td>
                         <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.name}</a></td>
@@ -18,7 +18,6 @@ const GlobalCoinsDisplay = ({liveCoinData, portfolioData}) => {
                         <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{parseFloat(coin.price).toFixed(2)}</a></td>
                         <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{getTrend(coin['1d'])}</a></td>
                     </tr>
-                </tbody>
             )
         })
     

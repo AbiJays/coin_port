@@ -24,7 +24,9 @@ const GlobalCoins = ({liveCoinData, portfolioData, hello}) => {
                             <th>Current Trend</th>
                         </tr>
                     </thead>
-                    <GlobalCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>
+                    <tbody>
+                        <GlobalCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>
+                    </tbody>
                 </table>
             </div>
         )
