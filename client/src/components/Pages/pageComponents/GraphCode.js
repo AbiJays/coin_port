@@ -8,13 +8,13 @@ import { ResponsiveLine } from '@nivo/line'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 const GraphCode = ({ data /* see data tab */ }) => {
-    const graphs = data.map(coin => {
-        console.log('GraphCode coin', coin)
+    // const graphs = data.map(coin => {
+    //     console.log('GraphCode coin', coin)
         return (
             
        
     <ResponsiveLine
-        coin={coin}
+        data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{
@@ -79,8 +79,8 @@ const GraphCode = ({ data /* see data tab */ }) => {
         ]}
     />
     )
-})
-return graphs;
+// })
+// return graphs;
 }
 
 export default GraphCode;

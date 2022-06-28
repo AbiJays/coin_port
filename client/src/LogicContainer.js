@@ -20,6 +20,7 @@ const LogicContainer = () => {
    // updates portfolio data every time new live data is available
    useEffect( () => liveCoinData.length > 0 && getPortfolioData(),[liveCoinData])
    
+
    // Refresh price update interval in milliseconds
     const PriceInterval = 60000  
     useEffect(() => {
@@ -34,7 +35,7 @@ const LogicContainer = () => {
 
         let liveData = []
 
-        // console.log("Getting Live data")
+        console.log("Getting Live data")
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=633baaa5c5fc3f3d6cd1535ca3c66509afe2f765&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
@@ -51,7 +52,9 @@ const LogicContainer = () => {
                 '365d':coin['365d'] && coin['365d'].price_change_pct}
 
             liveData.push(liveCoinObject)
-        })).then(res => setLiveCoinData(liveData))
+        })).then(res => {
+            setLiveCoinData(liveData);
+        })
     }
     ///////////////////////////////////////DATABASE
     
@@ -125,7 +128,9 @@ const LogicContainer = () => {
                 }}))
     .then(res => setPortfolioData(coinDetails))
     }
-    
+
+   
+
     const addTransaction = (transaction) => {
         setPortfolioData([...portfolioData, transaction])
     };
@@ -167,7 +172,8 @@ const LogicContainer = () => {
             dbData={dbData}
             portfolioData={portfolioData}
             liveCoinData={liveCoinData}
-            addTransaction={addTransaction}/>
+            addTransaction={addTransaction}
+            />
         </>
     )}
     return <h1>Loading</h1> 

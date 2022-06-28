@@ -2,71 +2,70 @@ import { useEffect, useState } from "react";
 import React from "react";
 import GraphCode from "../components/Pages/pageComponents/GraphCode";
 import DataStored from "../dataStored.js";
+import { availableCoins } from "../helpers/AvailableCoins";
 
 
-const GraphContainer = () => {
+const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
+
 
     const [coins, setCoins] = useState(["BTC", "ETH"]);
     const [coinDataDaily, setCoinDataDaily] = useState([])
     const [coinData5Min, setCoinData5Min] = useState([])
 
-    useEffect(()=> {
-        getCoinData();
-    }, []) 
+    console.log('how about here?', selectedCoinData)
+    // const [selectedCoinData, setSelectedCoinData] = useState({})
 
-    const getCoinData = () => {
-        console.log("Getting 5 min coin data");
-        // const coinPromises = coins.map((coin) => {
-        //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
-        //     .then(response => response.json())})
-        // Promise.all(coinPromises)
-        // .then((combinedData) => {
-        //     setCoinData5Min(combinedData);
-        // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
-        const coinDailyPromises = coins.map((coin) => {
-            return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${coin}&market=GBP&apikey=1786JGDXIS069AHE`)
-            .then(response => response.json())})
-        Promise.all(coinDailyPromises)
-        .then((combinedData) => {
-            setCoinDataDaily(combinedData);
-        })
-        // .then(setLoaded(true));
-        }
-    
+    // const selectedCoin = slug[Object.keys(slug)[0]];
+    // console.log(selectedCoin)
+
+    // useEffect(()=> {
+    //     getCoinData();
+    // }, []) 
+
+
+    // const getCoinData = () => {
+    //     console.log("Getting slug data");
+    //     // const coinPromises = coins.map((coin) => {
+    //     //     return fetch(`https://www.alphavantage.co/query?function=CRYPTO_INTRADAY&symbol=${coin}&market=USD&interval=5min&apikey=7PU7J7PVOJFO2VDL`) 
+    //     //     .then(response => response.json())})
+    //     // Promise.all(coinPromises)
+    //     // .then((combinedData) => {
+    //     //     setCoinData5Min(combinedData);
+    //     // }) //This will pull data in every 5 minutes. For up to date info but only when fetch is triggered. Reconstruct it to just pull the new data[0]
+    //     // const coinDailyPromises = availableCoins.map((coin) => {
+    //     return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${selectedCoin}&market=GBP&apikey=1786JGDXIS069AHE`)
+    //     .then(res => res.json())
+    //     .then((coinData) => {
+    //         setSelectedCoinData(coinData);
+    //         console.log(selectedCoin)
+    //         console.log(coinData)
+    //     })
+    //     }
+
         
-        if (coinDataDaily.length === 0) {
+        // console.log('available:', availableCoins)
+        // console.log('allData:', coinDataDaily)
+   
+        if (!selectedCoinData || Object.keys(selectedCoinData).length === 0) {
             return <p>Loading</p>
         }
-        console.log(coinDataDaily[0]["Meta Data"])
 
-        // const dates =[{}]
+        if (selectedCoinData) {
 
-        const dates = coinDataDaily.map(coin => {
-            // const coinCode = coin["Meta Data"]["2. Digital Currency Code"]
-            const container = {};
-            container[coin["Meta Data"]["2. Digital Currency Code"]] = Object.keys(coin["Time Series (Digital Currency Daily)"])
-            return container;
-        })
+        
+        // const selectedCoin = coinDataDaily.find(coin => coin["Meta Data"]["2. Digital Currency Code"] == slug[Object.keys(slug)[0]])
+        console.log('selectedCoinData:', selectedCoinData)
+        const listOfDates = Object.keys(selectedCoinData["Time Series (Digital Currency Daily)"])
 
-        // console.log('Dates be like:', dates);
-        // const listOfDates = Object.keys(coinDataDaily["Time Series (Digital Currency Daily)"])
-
-        const graphsData = coinDataDaily.map((coin) => {
-        // console.log('Dates be like:', dates);
-        const coinCode = String(coin["Meta Data"]["2. Digital Currency Code"])
-        // console.log('Coin is called', coinCode)
-        const coinDatesObject = dates.filter(date => Object.keys(date)[0] === coin["Meta Data"]["2. Digital Currency Code"])
-        const coinDates = coinDatesObject[0][coinCode]
-        // console.log('Coin Specific Dates be Like:', coinDates)
-        console.log(coinDates)
-        const data = coinDates.map((date) => {
+        
+        const data = listOfDates.map((date) => {
                 return {
                     "x": date,
-                    "y": parseFloat(coin["Time Series (Digital Currency Daily)"][date]["4a. close (GBP)"])
+                    "y": parseFloat(selectedCoinData["Time Series (Digital Currency Daily)"][date]["4a. close (GBP)"])
             }
         })
     
-        const id = coin["Meta Data"]["3. Digital Currency Name"];
+        const id = selectedCoinData["Meta Data"]["3. Digital Currency Name"];
         const color = "hsl(240, 20%, 50%)";
     
         const formattedCloseData = [{
@@ -75,22 +74,17 @@ const GraphContainer = () => {
             "data": data.slice(0,9)
         }]
 
-        return formattedCloseData
+      
     
-    })
+   
 
-    console.log(graphsData)
-        return ( 
+    return (
             <>
-            <GraphCode data = {graphsData} />
+                <GraphCode data = {formattedCloseData} />
             </>
-         );
+    )
 
 
-    // return (
-    //     {graphs}
-    // )
-
-
+}
 }
 export default GraphContainer;
