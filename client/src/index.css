@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
+    sans-serif;
     font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,16 +38,14 @@ code {
 }
 
 a:link {
-  color: rgb(6, 6, 72)9;
+  color: rgb(60, 60, 148);
   text-decoration: dashed;
   font-weight: 200;
 }
 
 a:visited {
-  color: rgb(56, 56, 124);
+  color: rgb(25, 25, 88);
   font-size: small;
-
-
 }
 
 
@@ -69,13 +67,13 @@ a:visited {
 } */
 
 #logInHeader {
-  color: rgb(19, 17, 34);
+  color: rgb(45, 43, 87);
   text-align: center;
   text-transform: uppercase;
 }
 
 span.brandName {
-  color: rgb(68, 59, 29);
+  color: rgb(236, 76, 52);
 }
 
 #logInForm {
@@ -101,38 +99,25 @@ span.brandName {
 }
 
 
-tbody {
-  text-align: center;
-}
-
-.portfolio-display>tr>:nth-child(1) {
-  text-align: left;
-}
-
 table {
-  /* border: 1px black solid; */
   border-collapse: separate;
-  border-spacing: 20px;
+  border-spacing: 5px;
 }
-
-tr {
-  outline: thin solid;
+th {
+  max-width: 100%;
 }
-
 tbody > tr {
   border-radius: 5px;
 }
-
-
-th {
-  padding: 2px 8px;
+td#globalCoinName {
+  width: 20px;
 }
 td a { 
   display: block; 
-  padding: 10px;
   width: 100%; 
   text-decoration: none;
 }
+
 
 .trend-up {
   color: green;
@@ -143,12 +128,36 @@ td a {
 }
 
 .link-container {
-  border: 1px black solid;
+  font-family: sans-serif, 'Segoe UI', 'Roboto', 'Oxygen';
+  padding-left: 20px;
+  border: 1px rgb(255, 255, 255) solid;
   width: fit-content;
-  background-color: lightgrey;
+  background-color: rgb(255, 255, 255);
 }
 
 .link-container > a {
+  color: rgb(236, 76, 52);
   text-decoration: none;
   padding: 3px;
 }
+
+.link-container > a:hover {
+  border: 1px rgb(45, 43, 87) solid;
+  width: fit-content;
+}
+
+tbody {
+  text-align: center;
+}
+.portfolio-display>tr>:nth-child(1) {
+  text-align: left;
+}
+
+
+/* 
+
+tr {
+  outline: thin solid;
+}
+
+ */

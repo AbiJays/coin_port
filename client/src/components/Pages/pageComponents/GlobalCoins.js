@@ -17,9 +17,7 @@ const GlobalCoins = ({liveCoinData, portfolioData, hello}) => {
                     <thead>
                         <tr id="portfolio-marker">
                             <th>In Portfolio</th>
-                            <th>Currency</th>
-                            <th></th>
-                            <th></th>
+                            <th colspan="2" id="globalCurrency">Currency</th>
                             <th>Current Price (£)</th>
                             <th>Current Trend</th>
                         </tr>
