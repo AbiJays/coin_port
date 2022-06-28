@@ -20,7 +20,7 @@ const filteredRoutes = function (collection) {
     router.get('/:coin', (req, res) => {
         const coin = req.params.coin;
         collection
-            .find({ "Coin":coin})
+            .find({ "refName":coin})
             .toArray()
             .then((doc) => res.json(doc))
             .catch((err) => {

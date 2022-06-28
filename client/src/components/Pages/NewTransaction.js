@@ -191,7 +191,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
             </table>
         </form>
 
-        <TransactionHistory dbData={dbData}/>
+        <TransactionHistory transactions={dbData}/>
         {/* <form className="transaction-form" onSubmit={handleTransactionSubmit} >
         </form> */}
         </>
