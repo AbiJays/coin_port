@@ -1,5 +1,6 @@
 import { getTrend, portfolioCoinMarker } from "../../../helpers/DisplayHelpers"
 
+
 const GlobalCoinsDisplay = ({liveCoinData, portfolioData}) => {
 
     if (liveCoinData.length > 0) {

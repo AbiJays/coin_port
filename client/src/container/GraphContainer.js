@@ -12,7 +12,7 @@ const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
     const [coinDataDaily, setCoinDataDaily] = useState([])
     const [coinData5Min, setCoinData5Min] = useState([])
 
-    console.log('how about here?', selectedCoinData)
+    // console.log('how about here?', selectedCoinData)
     // const [selectedCoinData, setSelectedCoinData] = useState({})
 
     // const selectedCoin = slug[Object.keys(slug)[0]];
