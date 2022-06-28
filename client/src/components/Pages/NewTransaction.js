@@ -114,10 +114,10 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
         // Change the behaviour of the max quantity so you cant sell more than you have
     const QuantityInput = () => {
         if (type === 'BUY') {
-            return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
+            return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
         }
             else {
-            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange}/>
+            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
         }}  
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {
@@ -173,10 +173,10 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
                             <p>{coin}</p>
                         </td>
                         <td>
-                            <QuantityInput></QuantityInput>
+                            <QuantityInput></QuantityInput >
                         </td>
                         <td>
-                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} />
+                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} required/>
                         </td>
                         <td>
                             <CurrencyInput id="totalValue" placeholder="totalValue" decimalsLimit={2} value={isNaN(transactionQuantity*price)? 0 : transactionQuantity*price} readOnly/>
