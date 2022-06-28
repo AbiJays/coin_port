@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CurrencyInput from 'react-currency-input-field';
 import TransactionHistory from "./pageComponents/TransactionHistory";
+import PortfolioTotal from "./pageComponents/PortfolioTotal";
 
 const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction}) => {
     // console.log('Transaction form', dbData)
@@ -20,7 +21,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     const handleCoinChange = event => coinChange(event.target.value)
     const handleMaxClick = event => setTransactionQuantity(portfolioData[portfolioIndex].portfolioQuantity)
     const handleTypeChange = event => {
-        let newType = event.target.value      
+        let newType = event.target.value
         setType(newType)
         if (newType === 'BUY') { // If buying, update the displayed coin to the first entry in the live data
             coinChange(liveCoinData[0].abbreviation)
@@ -130,6 +131,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
 
     return (
         <>
+        <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
         <h1>Log a New Transaction</h1>
 
         <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
