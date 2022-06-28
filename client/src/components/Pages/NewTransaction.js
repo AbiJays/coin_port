@@ -112,14 +112,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
         return coinIds.map(id => <option key={id} value = {id}> {id}</option>)
     }
 
-        // Change the behaviour of the max quantity so you cant sell more than you have
-    const QuantityInput = () => {
-        if (type === 'BUY') {
-            return <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
-        }
-            else {
-            return  <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
-        }}  
+ 
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {
         if (portfolioData.length > 0) {
@@ -173,7 +166,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
                             <p>{coin}</p>
                         </td>
                         <td>
-                            <QuantityInput></QuantityInput >
+                            <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {type === 'BUY' ? null : portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
                         </td>
                         <td>
                             <CurrencyInput id="price" placeholder="Price" decimalsLimit={2} value={price} onChange={handlePriceChange} required/>
