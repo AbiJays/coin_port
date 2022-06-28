@@ -27,9 +27,9 @@ const PortfolioCoins = ({liveCoinData, portfolioData}) => {
                             <th>Profit Loss (£)</th>
                         </tr>
                         </thead>
-
-                    <PortfolioCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>    
-
+                        <tbody  className="portfolio-display">
+                            <PortfolioCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>    
+                        </tbody>
 
                     </table>
                 </div>

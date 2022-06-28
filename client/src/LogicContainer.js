@@ -128,11 +128,9 @@ const LogicContainer = () => {
                 }}))
     .then(res => setPortfolioData(coinDetails))
     }
-
-   
-
-    const addTransaction = (transaction) => {
-        setPortfolioData([...portfolioData, transaction])
+    
+    const addTransaction = () => {
+        getLiveCoinData()
     };
 
     // const getCoinData = () => {

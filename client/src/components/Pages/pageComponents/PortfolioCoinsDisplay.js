@@ -12,7 +12,6 @@ const PortfolioCoinsDisplay = ({portfolioData}) => {
 
 
         return (
-            <tbody className="portfolio-display">
                 <tr key={coin.abbreviation}>
                     <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.name}</a></td>
                     <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}><img src={coin.logo} alt={coin.abbreviation + "logo"} className="logo" /></a></td>
@@ -23,7 +22,6 @@ const PortfolioCoinsDisplay = ({portfolioData}) => {
                     <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{getTrend(coin.trend)}</a></td>
                     <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.profitAndLoss}</a></td>
                 </tr>
-            </tbody>
     
             )
         })
