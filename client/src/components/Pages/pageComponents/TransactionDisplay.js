@@ -6,7 +6,7 @@ const TransactionDisplay = ({dbData}) => {
                         <tr>
                             <td>{coin.dateTime.slice(0,10)}</td>
                             <td>{coin.name}</td>
-                            <td>logo</td>
+                            <td><img src={coin.logo} alt={coin.abbreviation + "logo"} className="logo" /></td>
                             <td>{coin.refName}</td>
                             <td>{coin.quantity}</td>
                             <td>{coin.price}</td>
