@@ -132,7 +132,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
     return (
         <>
         <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
-        <h1>Log a New Transaction</h1>
+        <h2>Log a New Transaction</h2>
 
         <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
         <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>

@@ -6,6 +6,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 code {
@@ -61,11 +63,6 @@ a:visited {
   width: auto;
 }
 
-/* .button {
-  border: none;
-
-} */
-
 #logInHeader {
   color: rgb(45, 43, 87);
   text-align: center;
@@ -98,6 +95,9 @@ span.brandName {
   background: rgb(216, 214, 205);
 }
 
+.portfolio-total {
+  color: rgb(236, 76, 52);
+}
 
 table {
   border-collapse: separate;
@@ -153,11 +153,3 @@ tbody {
   text-align: left;
 }
 
-
-/* 
-
-tr {
-  outline: thin solid;
-}
-
- */
