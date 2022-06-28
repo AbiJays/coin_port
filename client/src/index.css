@@ -99,6 +99,10 @@ span.brandName {
   color: rgb(236, 76, 52);
 }
 
+#globalH1 {
+  color: rgb(45, 43, 87);
+}
+
 table {
   border-collapse: separate;
   border-spacing: 5px;
