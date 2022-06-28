@@ -1,21 +1,24 @@
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
 import NavBar from "./NavBar";
 import LogIn from './Pages/LogIn';
+import Logout from './Pages/Logout';
 import MyPortfolio from './Pages/MyPortfolio';
 import CoinDetails from './Pages/CoinDetails';
 import TransactionForm from './Pages/NewTransaction';
 import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
 
-const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinData, addTransaction, dbData, getUsernameAttempt, getPasswordAttempt, handleLoginAttempt}) => {
+const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinData, addTransaction, dbData, getUsernameAttempt, getPasswordAttempt, handleLoginAttempt, handleLogout}) => {
   // console.log('Router', availableCoins);
-  console.log('Login', loginStatus)
+  // console.log('Login', loginStatus)
+
   return (
     <BrowserRouter>
        {loginStatus &&
       <div className='header'>
        <NavBar />
-       <a href="/">Logout</a>
+       <Logout handleLogout={handleLogout} />
+
       </div>}
       <Routes>
         <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData} getUsernameAttempt={getUsernameAttempt} getPasswordAttempt={getPasswordAttempt} handleLoginAttempt={handleLoginAttempt}/>} />

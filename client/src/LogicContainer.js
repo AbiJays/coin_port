@@ -13,12 +13,12 @@ const LogicContainer = () => {
     // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
-    const [loginStatus, setLoginStatus] = useState(false)
+    const [loginStatus, setLoginStatus] = useState()
     const [usernameAttempt, setUsernameAttempt] = useState("");
     const [passwordAttempt, setPasswordAttempt] = useState("");
     const loginDetails = {
-        username: 'a',
-        password: 'b'
+        username: 'whereiszsolt',
+        password: 'hegone'
     }
 
     
@@ -161,6 +161,9 @@ const LogicContainer = () => {
 
   
     }
+    const handleLogout = () => {
+        setLoginStatus(false);
+    }
 
     useEffect(() => {
         console.log('unmounted')
@@ -208,6 +211,7 @@ const LogicContainer = () => {
             getPasswordAttempt={getPasswordAttempt}
             handleLoginAttempt={handleLoginAttempt}
             loginStatus={loginStatus}
+            handleLogout={handleLogout}
             />
         </>
     )}
