@@ -42,7 +42,7 @@ code {
 }
 
 .logo {
-  height: 15px;
+  height: 20px;
   width: auto;
 }
 
@@ -50,8 +50,34 @@ tbody {
   text-align: center;
 }
 
-tbody>tr>:nth-child(1) {
+.portfolio-display>tr>:nth-child(1) {
   text-align: left;
+}
+
+table {
+  /* border: 1px black solid; */
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+
+tr {
+  outline: thin solid;
+}
+
+tbody > tr {
+  border-radius: 5px;
+}
+
+
+
+th {
+  padding: 2px 8px;
+}
+td a { 
+  display: block; 
+  padding: 10px;
+  width: 100%; 
+  text-decoration: none;
 }
 
 .trend-up {
