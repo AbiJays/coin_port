@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrencyInput from 'react-currency-input-field';
 import TransactionHistory from "./pageComponents/TransactionHistory";
 
-const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
+const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction}) => {
     // console.log('Transaction form', dbData)
     // Form entry
     const [ type, setType] = useState('BUY')
@@ -56,6 +56,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData}) => {
             headers: { 'Content-Type': 'application/json'}
         })
         .then(res => res.json())
+        .then(addTransaction())
 
         // Add transaction to dbdata and display transactions
         // then write routes for editing and deleting
