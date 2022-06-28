@@ -3,6 +3,7 @@ import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
 import { useEffect, useState } from "react";
 import SingleCoinDisplay from "./pageComponents/SingleCoinDisplay";
+import TransactionHistory from "./pageComponents/TransactionHistory";
 
 
 const CoinDetails = ({portfolioData, liveCoinData}) => {
