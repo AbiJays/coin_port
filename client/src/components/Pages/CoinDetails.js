@@ -109,9 +109,9 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                      
                             <SingleCoinDisplay coin={coinPortfolioData} portfolioData={portfolioData}/>
-                        </tr>
+            
                     </tbody>
                 </table>
                 }
