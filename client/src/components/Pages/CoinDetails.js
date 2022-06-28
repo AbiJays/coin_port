@@ -1,18 +1,19 @@
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
 import { useEffect, useState } from "react";
 import { getCoinPortfolioData } from "../../helpers/CoinFilters";
 import SingleCoinDisplay from "./pageComponents/SingleCoinDisplay";
 
-const CoinDetails = ({portfolioData}) => {
+
+const CoinDetails = ({portfolioData, liveCoinData}) => {
     const { slug }  = useParams()
 
     const [selectedCoinData, setSelectedCoinData] = useState({})
 
     const selectedCoin = slug;
-    console.log('slug:', slug)
-    console.log('Portfolio data:', portfolioData)
+    // console.log('slug:', slug)
+    // console.log('Portfolio data:', portfolioData)
 
     useEffect(()=> {
         getCoinData();
@@ -32,7 +33,7 @@ const CoinDetails = ({portfolioData}) => {
         return fetch( `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=${slug}&market=GBP&apikey=1786JGDXIS069AHE`)
         .then(res => res.json())
         .then((coinData) => {
-            console.log('this is the data:', coinData)
+            // console.log('this is the data:', coinData)
             setSelectedCoinData(coinData);
         })
         }
@@ -42,19 +43,42 @@ const CoinDetails = ({portfolioData}) => {
             return <p>Loading</p>
         }
     
+        // Catches error if coin not in API
+        if (Object.keys(selectedCoinData).length === 1) {
+            return (
+                <>
+                    <p>Sorry, we don't have data for that today...</p>
+                    <a href="http://localhost:3000/coin/BTC">Back to Bitcoin</a>
+                </>
+            )
+        }
         
         if (selectedCoinData) {
-
             
-            // console.log('this is the data:', selectedCoinData)
+            console.log('portfolio data:', portfolioData)
+            console.log('this is the data:', selectedCoinData)
             // console.dir(portfolioData)
             // console.log('stuff', portfolioData.portfolioData)
             // const useablePortfolioData = portfolioData
             const coinPortfolioData = portfolioData.find(coin => coin.abbreviation===slug)
+            const portfolioCoinCodes = portfolioData.map(coin => coin.abbreviation)
             // console.log('slugs portfolio data:', coinPortfolioData)
-
             const coinName = selectedCoinData["Meta Data"]["3. Digital Currency Name"]
-            // console.log('is it here?', selectedCoinData)
+            
+            const coinOptions = liveCoinData.map(coin => {
+                return (
+                    <option key={coin.abbreviation}>{coin.name}</option>
+                )
+            })
+
+            const getCoinByName = (selectedName) => liveCoinData.find(coin => coin.name === selectedName)
+
+            const handleCoinSubmit = (e) => {
+                console.log(e.target.value)
+                // const newCoin = getCoinByName(e.target.value).abbreviation
+                window.location.href = `http://localhost:3000/coin/${getCoinByName(e.target.value).abbreviation}`
+            }
+
             return (
                 <>
                 <h1>{coinName} </h1>
@@ -64,6 +88,8 @@ const CoinDetails = ({portfolioData}) => {
                     < GraphContainer slug={slug} selectedCoin={selectedCoin} selectedCoinData={selectedCoinData}/>
                     </div>
                 </div>
+
+                {portfolioCoinCodes.includes(slug) && 
                 <table>
                     <thead>
                         <tr>
@@ -83,6 +109,14 @@ const CoinDetails = ({portfolioData}) => {
                         </tr>
                     </tbody>
                 </table>
+                }
+
+
+                <select onChange={handleCoinSubmit}>
+                    
+                    <option >View coin:</option>
+                    {coinOptions}
+                </select>
             </>
             )
         }
