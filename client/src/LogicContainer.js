@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CoinRouter from "./components/Router";
+import { formatPortfolioData } from "./helpers/FormatPortfolioData";
 
 const LogicContainer = () => {
     // API States
@@ -24,9 +25,9 @@ const LogicContainer = () => {
     }, []);
     useEffect( () => liveCoinData.length > 0 && getPortfolioData(),[liveCoinData])
     
-// API call
+    // API call
     const getLiveCoinData = () => {
-        console.log('getting live data')
+        // console.log('getting live data')
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.map(coin => {
@@ -45,59 +46,10 @@ const LogicContainer = () => {
     const addTransaction = () => getLiveCoinData()
 
     // Database call
-    const getPortfolioData = () => {
-        console.log('getting database data')
-        let collatedCoinList = []
-        let coinDetails = []
+    const handleDBData = (data) => setDbData(data)
+    const handlePortfolioData = (data) => setPortfolioData(data)
+    const getPortfolioData = () => formatPortfolioData(liveCoinData,handleDBData,handlePortfolioData)
 
-        fetch(`http://localhost:5000/api/transactions`)
-            .then(res => res.json())
-            .then(transactions => transactions.forEach( transaction => {
-                setDbData(transactions)
-                
-                //Find coin index in live data
-                let liveIndex = liveCoinData.findIndex((coin) => coin.abbreviation == transaction.refName)
-                
-                if (!(collatedCoinList.includes(transaction.refName))){
-                    collatedCoinList.push(transaction.refName)
-                    
-                    let coinObject = {
-                        logo:liveCoinData[liveIndex].logo,
-                        name:transaction.name,
-                        abbreviation:transaction.refName,
-                        currentPrice:liveCoinData[liveIndex].price,
-                        trend:liveCoinData[liveIndex]['1d'],
-                        portfolioQuantity:parseFloat(transaction.quantity),
-                        investmentValue:(parseFloat(transaction.quantity)*parseFloat(liveCoinData[liveIndex].price)).toFixed(2),
-                        totalSpend:(parseFloat(transaction.quantity)*parseFloat(transaction.price)).toFixed(2),
-                        profitAndLoss:((parseFloat(transaction.quantity)*(liveCoinData[liveIndex].price))-parseFloat(transaction.quantity)*parseFloat(transaction.price)).toFixed(2)
-                    }
-                coinDetails.push(coinObject)
-                }
-                // Coin already in list
-                else {
-                    let index = coinDetails.findIndex((coin) => coin.abbreviation == transaction.refName)
-                    let newQuantity;
-                    let newTotalSpend;
-                    if (transaction.type === 'BUY') {
-                        newQuantity = parseFloat(coinDetails[index].portfolioQuantity) + parseFloat(transaction.quantity)
-                        newTotalSpend  = (parseFloat(coinDetails[index].totalSpend) + (parseFloat(transaction.quantity)*parseFloat(transaction.price)))
-                        coinDetails[index].portfolioQuantity = newQuantity
-                        coinDetails[index].investmentValue = (newQuantity*(parseFloat(liveCoinData[liveIndex].price))).toFixed(2)
-                        coinDetails[index].totalSpend = newTotalSpend.toFixed(2)
-                        coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend).toFixed(2)
-                    }
-                    else {
-                        newQuantity = parseFloat(coinDetails[index].portfolioQuantity) - parseFloat(transaction.quantity)
-                        newTotalSpend  = (parseFloat(coinDetails[index].totalSpend) - (parseFloat(transaction.quantity)*parseFloat(transaction.price)))
-                        coinDetails[index].portfolioQuantity = newQuantity
-                        coinDetails[index].investmentValue = (newQuantity*(parseFloat(liveCoinData[liveIndex].price))).toFixed(2)
-                        coinDetails[index].totalSpend = newTotalSpend.toFixed(2)
-                        coinDetails[index].profitAndLoss = ((newQuantity*(liveCoinData[liveIndex].price))-newTotalSpend).toFixed(2)
-                    }
-                }}))
-    .then(res => setPortfolioData(coinDetails))
-    }
     const getUsernameAttempt = (e) => {
         setUsernameAttempt(e.target.value);
         setLoginStatus(false);
