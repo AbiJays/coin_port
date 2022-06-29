@@ -7,6 +7,7 @@ import CoinDetails from './Pages/CoinDetails';
 import TransactionForm from './Pages/NewTransaction';
 import GlobalCurrencies from './Pages/GlobalCurrencies';
 import ErrorPage from './Pages/ErrorPage';
+import Footer from './Pages/Footer';
 
 const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinData, addTransaction, dbData, getUsernameAttempt, getPasswordAttempt, handleLoginAttempt, handleLogout}) => {
 
@@ -27,9 +28,14 @@ const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinDa
         <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} portfolioData={portfolioData} hello={hello} />} />
         <Route path="*" element={<ErrorPage />}/>
       </Routes>
+<<<<<<< HEAD
       <div className="footer">
         <p>@2022 Copyright Coinport</p>
       </div>
+=======
+      <Footer />
+      
+>>>>>>> develop
     </BrowserRouter>
   )}
 
