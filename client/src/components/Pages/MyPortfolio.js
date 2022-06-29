@@ -7,11 +7,12 @@ const MyPortfolio = ({liveCoinData, portfolioData}) => {
     
     return (
         <>
-            <PortfolioTotal portfolioData={portfolioData}/>
-            <PortfolioCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
-            <div className="link-container">
-                <a href="/transactionform">Add Transaction</a>
-            </div>
+        <h1 id="portfolioH1">My Portfolio</h1>
+        <PortfolioTotal portfolioData={portfolioData}/>
+        <PortfolioCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
+        <div className="link-container">
+            <a href="/transactionform">Add Transaction</a>
+        </div>
         </> 
      );
 }

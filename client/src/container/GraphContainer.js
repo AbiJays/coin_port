@@ -54,7 +54,7 @@ const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
 
         
         // const selectedCoin = coinDataDaily.find(coin => coin["Meta Data"]["2. Digital Currency Code"] == slug[Object.keys(slug)[0]])
-        console.log('selectedCoinData:', selectedCoinData)
+        // console.log('selectedCoinData:', selectedCoinData)
         const listOfDates = Object.keys(selectedCoinData["Time Series (Digital Currency Daily)"])
 
         

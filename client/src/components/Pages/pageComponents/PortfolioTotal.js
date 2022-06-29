@@ -3,10 +3,8 @@ import { getPortfolioTotal, getProfitAndLossTotal } from "../../../helpers/Displ
 const PortfolioTotal = ({portfolioData}) => {
     return (
         <div className="portfolio-total">
-            <h1>Portfolio Total Value:</h1>
-            <h1>£{getPortfolioTotal(portfolioData).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
-            <h1>Total {(parseFloat(getProfitAndLossTotal(portfolioData)) >= 0 )? "profit" : "loss"}:</h1>
-            <h1>£{getProfitAndLossTotal(portfolioData).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
+            <h1>Portfolio Total Value: £{getPortfolioTotal(portfolioData).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
+            <h1>Total {(parseFloat(getProfitAndLossTotal(portfolioData)) >= 0 )? "profit" : "loss"}: £{getProfitAndLossTotal(portfolioData).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h1>
         </div>
     )}
 
