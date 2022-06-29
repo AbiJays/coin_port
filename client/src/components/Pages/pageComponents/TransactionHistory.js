@@ -14,9 +14,7 @@ const TransactionHistory = ({transactions}) => {
                 <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Currency</th>
-                    <th></th>
-                    <th></th>
+                    <th colSpan="3">Currency</th>
                     <th>Quantity</th>
                     <th>Purchase Price (£)</th>
                     <th>Transaction Type</th>
