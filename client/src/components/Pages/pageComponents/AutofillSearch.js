@@ -55,7 +55,9 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
 
           return (
               <>
-                  <div id="autofillSearch"></div>
+                  <div id="autofillSearch">
+                    <p>Or search for a coin here:</p>
+                  </div>
                   <ReactSearchAutocomplete
                       items={searchableCoins}
                       onSearch={handleOnSearch}

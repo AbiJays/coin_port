@@ -70,8 +70,8 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
             })
 
             const getSearchResult = (coin) => {
-                console.log(coin)
-            }
+                window.location.href = `http://localhost:3000/coin/${coin.abbreviation}` 
+                       }
             return (
                 <>
                 <h1>{coinName} </h1>
