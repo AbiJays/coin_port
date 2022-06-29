@@ -37,7 +37,6 @@ code {
   align-content: center;
   padding-left: 5em;
   padding-right: 5em;
-  background-color: rgb(236, 76, 52, 0.1);
 }
 .header > ul {
   display: flex;
@@ -267,7 +266,6 @@ select#otherCoinSelector {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgb(236, 76, 52, 0.1);
   color: rgb(45, 43, 87);
   text-align: center;
   vertical-align: center;
