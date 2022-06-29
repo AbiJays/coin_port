@@ -120,12 +120,11 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
 
                     <div className="coin-detail-title-container">
                         <h4>{coinName}'s current market behaviour:</h4>
-                        <select onChange={handleCoinSubmit}>
-                            <option >View a different coin:</option>
+                        <select id="otherCoinSelector" onChange={handleCoinSubmit}>
+                            <option >View a Different Coin:</option>
                             {coinOptions}
                         </select>
                         <div className="autofill-container">
-
                         <AutofillSearch liveCoinData={liveCoinData} getSearchResult={getSearchResult}/>
                         </div>
                     </div>
@@ -140,8 +139,6 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                     <thead>
                         <tr>
                             <th>Currency</th>
-                            <th></th>
-                            <th></th>
                             <th>Quantity</th>
                             <th>Current Global Price (£)</th>
                             <th>Investment Value (£)</th>

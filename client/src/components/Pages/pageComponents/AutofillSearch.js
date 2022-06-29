@@ -55,7 +55,7 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
 
           return (
               <>
-                  <div style={{ width: 400, margin:20 }}></div>
+                  <div id="autofillSearch"></div>
                   <ReactSearchAutocomplete
                       items={searchableCoins}
                       onSearch={handleOnSearch}
@@ -66,7 +66,7 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
                       styling={{ zIndex: 4 }} // To display it on top of the search box below
                       autoFocus
                       />
-                  <div style={{ marginTop: 20 }}>This text will be covered!</div>
+                  <div style={{ marginTop: 0 }}></div>
               </>
           )
     }
