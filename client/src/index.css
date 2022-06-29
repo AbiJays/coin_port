@@ -297,3 +297,7 @@ select#otherCoinSelector {
   font-size: 14px;
   width: 160px;
 }
+
+#lineChart {
+  margin-bottom: 20px;
+}
