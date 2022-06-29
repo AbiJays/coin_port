@@ -1,9 +1,8 @@
-import { portfolioCoinMarker, getTrend } from "../../../helpers/DisplayHelpers";
+import { getTrend } from "../../../helpers/DisplayHelpers";
 
 const SingleCoinDisplay = ({coin}) => {
 
     return (
-                
         <>
         <tr key={coin.abbreviation}>
             <td rowSpan="2"><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.name}</a></td>
@@ -18,8 +17,6 @@ const SingleCoinDisplay = ({coin}) => {
             <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.abbreviation}</a></td>
         </tr>
         </>
-        
-)
-}
+)}
 
 export default SingleCoinDisplay;

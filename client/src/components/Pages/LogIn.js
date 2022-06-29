@@ -11,34 +11,22 @@ const [warning, setWarning] = useState("")
         setWarning("")
     }
 
-    const removeWarning = () => {
-        setWarning("")
-    }
+    const removeWarning = () => setWarning("")
     
-    const handlePasswordInput = (e) => {
-        // console.log('password', e)
-        getPasswordAttempt(e)
-    }
+    const handlePasswordInput = (e) => getPasswordAttempt(e)
 
     async function handleLoginSubmit(e) {
         e.preventDefault()
-        // console.log('submit', e)
         await handleLoginAttempt()
         if (!handleLoginAttempt()) {
             setWarning("The details you entered don't match our database, please try again.")
         } else {
-
             navigate("/myportfolio")
         }
         e.target.reset()
-
     }
     
         return (
-        <>
-
-
-
         <div >
             <h1 id= "logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
             <form id= "logInForm" action="" onSubmit={handleLoginSubmit}>
@@ -48,11 +36,8 @@ const [warning, setWarning] = useState("")
                 <input type="password" id="password" name="password" onChange={handlePasswordInput}/>
                 <input type="submit" id="logInSubmit" value="Log in"/>
             </form>
-
             <p id="login-warning-text">{warning}</p> 
         </div>
-        </>
-    );
-}
+    )}
 
 export default LogIn;

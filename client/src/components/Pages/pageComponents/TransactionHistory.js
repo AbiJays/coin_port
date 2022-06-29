@@ -1,12 +1,12 @@
 import TransactionDisplay from "./TransactionDisplay";
 
-const TransactionHistory = ({transactions, coinName, slug}) => {
-    // console.log(dbData);
+const TransactionHistory = ({transactions}) => {
+
     if (transactions.length === 0) {
-        return null
+        return (
+            <p>You do not have any transactions for this coin yet</p>
+        )
     }
-
-
     return (
         <>
         <h2>Transaction History</h2>
@@ -22,14 +22,9 @@ const TransactionHistory = ({transactions, coinName, slug}) => {
                     <th>Transaction Type</th>
                 </tr>
             </thead>
-
             <TransactionDisplay transactions={transactions} />
-            {/* <PortfolioCoinsDisplay liveCoinData={liveCoinData} portfolioData={portfolioData}/>     */}
-
-
         </table>
         </>
     )
 }
-
 export default TransactionHistory;
