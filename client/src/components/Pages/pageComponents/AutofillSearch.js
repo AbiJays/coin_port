@@ -21,24 +21,24 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
 
 
         const handleOnSearch = (string, results) => {
-            console.log(string, results);
+            // console.log(string, results);
         }
 
         const handleOnHover = (result) => {
-            console.log(result);
+            // console.log(result);
           };
         
           const handleOnSelect = (item) => {
-            console.log(item);
+            // console.log(item);
             getSearchResult(item);
           };
         
           const handleOnFocus = () => {
-            console.log("Focused");
+            // console.log("Focused");
           };
         
           const handleOnClear = () => {
-            console.log("Cleared");
+            // console.log("Cleared");
           };
         
         //   const formatResult = (item) => {
