@@ -21,7 +21,7 @@ body {
     flex-grow: p;
     flex-shrink: 0;
     flex-basis: auto;
-    background-color: rgb(236, 76, 52, 0.1);
+    /* background-color: rgb(236, 76, 52, 0.1); */
   }
 
 #root {
@@ -58,7 +58,7 @@ code {
   align-content: center;
   padding-left: 5em;
   padding-right: 5em;
-  background-color: rgb(236, 76, 52, 0.1);
+  /* background-color: rgb(236, 76, 52, 0.1); */
 }
 .header > ul {
   display: flex;
