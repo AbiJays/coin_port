@@ -16,17 +16,20 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
 
     const [selectedCoinData, setSelectedCoinData] = useState({})
     const [coinTransactions, setCoinTransactions] = useState([])
-
-    const selectedCoin = slug;
+    const [selectedCoin, setSelectedCoin] = useState(slug)
+    // const selectedCoin = slug;
     // console.log('slug:', slug)
     // console.log('Portfolio data:', portfolioData)
 
-
+    // useEffect( () => {
+    //     setSelectedCoin(slug)
+    // }, [slug])
 
     useEffect(()=> {
         getCoinData();
         getCoinPortfolioData();
-    }, [])
+    }, [selectedCoin
+    ])
 
     const getCoinData = () => {
         console.log("Getting slug data");
@@ -62,9 +65,10 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
         const getCoinByName = (selectedName) => liveCoinData.find(coin => coin.name === selectedName)
 
         const handleCoinSubmit = (e) => {
-            console.log(e.target.value)
-            // const newCoin = getCoinByName(e.target.value).abbreviation
-            window.location.href = `http://localhost:3000/coin/${getCoinByName(e.target.value).abbreviation}`
+            // console.log(e.target.value)
+            const newCoin = getCoinByName(e.target.value).abbreviation
+            setSelectedCoin(newCoin)
+            navigate(`/coin/${newCoin}`)
         }
 
         if (!selectedCoinData || Object.keys(selectedCoinData).length === 0) {
@@ -110,8 +114,10 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
             })
 
             const getSearchResult = (coin) => {
-                window.location.href = `http://localhost:3000/coin/${coin.abbreviation}` 
-                       }
+                // const newCoin = getCoinByName(e.target.value).abbreviation
+                setSelectedCoin(coin.abbreviation)
+                navigate(`/coin/${coin.abbreviation}`)
+            }
             return (
                 <>
                 <h1>{coinName} </h1>

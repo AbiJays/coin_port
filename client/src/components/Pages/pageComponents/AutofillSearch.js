@@ -17,7 +17,6 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
             }
         ))
 
-        // console.log('searchable', searchableCoins)
 
 
         const handleOnSearch = (string, results) => {
@@ -31,6 +30,9 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
           const handleOnSelect = (item) => {
             // console.log(item);
             getSearchResult(item);
+            // searchText = ""
+
+
           };
         
           const handleOnFocus = () => {
@@ -40,18 +42,9 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
           const handleOnClear = () => {
             // console.log("Cleared");
           };
-        
-        //   const formatResult = (item) => {
-        //     console.log(item);
-        //     return (
-        //       <div className="result-wrapper">
-        //         <span className="result-span">id: {item.id}</span>
-        //         <span className="result-span">name: {item.name}</span>
-        //       </div>
-        //     );
-        //   };
 
-        
+
+        const searchText = "or search for a coin here"
 
           return (
               <>
@@ -59,14 +52,16 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
                     <p>Or search for a coin here:</p>
                   </div>
                   <ReactSearchAutocomplete
+                      inputValue=''
                       items={searchableCoins}
                       onSearch={handleOnSearch}
                       onHover={handleOnHover}
                       onSelect={handleOnSelect}
                       onFocus={handleOnFocus}
                       onClear={handleOnClear}
+                      clearOnSelect={true}
                       styling={{ zIndex: 4 }} // To display it on top of the search box below
-                      autoFocus
+                    //   autoFocus
                       />
                   <div style={{ marginTop: 0 }}></div>
               </>
