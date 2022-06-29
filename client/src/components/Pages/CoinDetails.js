@@ -129,7 +129,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 </table>
                 }
 
-                <button className="new-transaction-button" onClick={goToForm}>Click to add a transaction for {coinName}.</button>
+                <button className="new-transaction-button" onClick={goToForm}>Click to add a transaction for {coinName}</button>
 
                 <TransactionHistory transactions={coinTransactions} coinName={coinName}></TransactionHistory>
             </div>
