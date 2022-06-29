@@ -151,12 +151,11 @@ span.brandName {
 table {
   border-collapse: separate;
   border-spacing: 5px;
+  width: 100%;
   
 }
 th {
   max-width: 100%;
-  
-
 }
 
 thead {

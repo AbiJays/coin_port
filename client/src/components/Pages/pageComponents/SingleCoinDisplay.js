@@ -20,9 +20,6 @@ const SingleCoinDisplay = ({coin}) => {
             <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{getTrend(coin.trend)}</a></td>
             <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.profitAndLoss}</a></td>
         </tr>
-        <tr>
-            {/* <td><a href={"http://localhost:3000/coin/" + coin.abbreviation}>{coin.abbreviation}</a></td> */}
-        </tr>
         </>
 )}
 
