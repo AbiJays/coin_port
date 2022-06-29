@@ -13,7 +13,7 @@ const LogicContainer = () => {
     // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
-    const [loginStatus, setLoginStatus] = useState()
+    const [loginStatus, setLoginStatus] = useState(true)
     const [usernameAttempt, setUsernameAttempt] = useState("");
     const [passwordAttempt, setPasswordAttempt] = useState("");
     const loginDetails = {
@@ -165,9 +165,9 @@ const LogicContainer = () => {
         setLoginStatus(false);
     }
 
-    useEffect(() => {
-        console.log('unmounted')
-    }, [loginStatus])
+    // useEffect(() => {
+    //     console.log('unmounted')
+    // }, [loginStatus])
 
     // const getCoinData = () => {
     //     console.log("Getting 5 min coin data");

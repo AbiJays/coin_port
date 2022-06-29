@@ -1,9 +1,11 @@
+import { React, useEffect, useState } from "react";
 import { useParams,useLocation } from "react-router-dom";
+
 import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
-import { useEffect, useState } from "react";
 import SingleCoinDisplay from "./pageComponents/SingleCoinDisplay";
 import TransactionHistory from "./pageComponents/TransactionHistory";
+import AutofillSearch from "./pageComponents/AutofillSearch";
 
 
 const CoinDetails = ({portfolioData, liveCoinData}) => {
@@ -81,8 +83,8 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
         
         if (selectedCoinData) {
             
-            console.log('portfolio data:', portfolioData)
-            console.log('this is the data:', selectedCoinData)
+            // console.log('portfolio data:', portfolioData)
+            // console.log('this is the data:', selectedCoinData)
             // console.dir(portfolioData)
             // console.log('stuff', portfolioData.portfolioData)
             // const useablePortfolioData = portfolioData
@@ -97,8 +99,9 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 )
             })
 
-
-
+            const getSearchResult = (coin) => {
+                console.log(coin)
+            }
             return (
                 <>
                 <h1>{coinName} </h1>
@@ -111,6 +114,10 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                             <option >View a different coin:</option>
                             {coinOptions}
                         </select>
+                        <div className="autofill-container">
+
+                        <AutofillSearch liveCoinData={liveCoinData} getSearchResult={getSearchResult}/>
+                        </div>
                     </div>
 
                     <div id="lineChart">
