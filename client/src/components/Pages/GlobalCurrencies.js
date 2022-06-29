@@ -4,8 +4,8 @@ import PortfolioTotal from "./pageComponents/PortfolioTotal";
 const GlobalCurrencies = ({liveCoinData, portfolioData}) => {
     return (
         <>
-            <h1 id="globalH1">Available Crypto Currencies</h1>
             <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
+            <h1 id="globalH1">Available Crypto Currencies</h1>
             <GlobalCoins liveCoinData={liveCoinData} portfolioData={portfolioData}/>
         </>
     )}

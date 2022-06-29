@@ -3,7 +3,7 @@ const TransactionDisplay = ({transactions}) => {
     const transactionHistoryDisplay = transactions.map(coin => {
         return (
             <tbody>
-                <tr>
+                <tr className="transaction-row">
                     <td>{coin.dateTime.slice(0,10)}</td>
                     <td>{coin.name}</td>
                     <td><img src={coin.logo} alt={coin.abbreviation + "logo"} className="logo" /></td>
