@@ -161,3 +161,6 @@ tbody {
   width: auto;
 }
 
+.autofill-container {
+  width: 150px;
+}

@@ -165,9 +165,9 @@ const LogicContainer = () => {
         setLoginStatus(false);
     }
 
-    useEffect(() => {
-        console.log('unmounted')
-    }, [loginStatus])
+    // useEffect(() => {
+    //     console.log('unmounted')
+    // }, [loginStatus])
 
     // const getCoinData = () => {
     //     console.log("Getting 5 min coin data");

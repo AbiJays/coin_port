@@ -6,7 +6,7 @@ const LogIn = ({getUsernameAttempt, getPasswordAttempt, handleLoginAttempt}) => 
 const [warning, setWarning] = useState("")
     let navigate=useNavigate();
     const handleUsernameInput = (e) => {
-        console.log('username', e.target.value)
+        // console.log('username', e.target.value)
         getUsernameAttempt(e);
         setWarning("")
     }
@@ -16,13 +16,13 @@ const [warning, setWarning] = useState("")
     }
     
     const handlePasswordInput = (e) => {
-        console.log('password', e)
+        // console.log('password', e)
         getPasswordAttempt(e)
     }
 
     async function handleLoginSubmit(e) {
         e.preventDefault()
-        console.log('submit', e)
+        // console.log('submit', e)
         await handleLoginAttempt()
         if (!handleLoginAttempt()) {
             setWarning("The details you entered don't match our database, please try again.")
