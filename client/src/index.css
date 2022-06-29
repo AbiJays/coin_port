@@ -253,3 +253,19 @@ select#otherCoinSelector {
   font-size: 14px;
   width: 160px;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(236, 76, 52, 0.1);
+  color: rgb(45, 43, 87);
+  text-align: center;
+  vertical-align: center;
+  height: 30px;
+}
+
+.footer > p{
+  margin-top: 6px;
+}
