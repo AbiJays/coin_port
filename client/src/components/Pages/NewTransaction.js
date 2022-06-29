@@ -4,18 +4,13 @@ import CurrencyInput from 'react-currency-input-field';
 import TransactionHistory from "./pageComponents/TransactionHistory";
 import PortfolioTotal from "./pageComponents/PortfolioTotal";
 
-const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, selectedCoin}) => {
+const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction}) => {
     // Form entry
     const [ type, setType] = useState('BUY');
     const [ transactionQuantity, setTransactionQuantity ] = useState();
     const [ dateTime, setDateTime ] = useState((new Date()).toISOString().slice(0,-8));
     const [ price, setPrice] = useState();
-    // Coin info autofill
-    
-    // if slug exists 
-    // run coinChange(slug)
-    
-    
+
     const [ coin, setCoin ] = useState(liveCoinData[0].abbreviation);
     const [ coinIndex, setCoinIndex ] = useState(0);
     const [ portfolioIndex, setPortfolioIndex] = useState(0);
@@ -24,7 +19,6 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
     useEffect(() => {
         if (slug) coinChange(slug)
     }, [])
-    
     // Event handlers for filling out form
     const handleTransactionQuantityChange = event => setTransactionQuantity(event.target.value)
     const handleDateTimeChange = event => setDateTime(event.target.value)
@@ -40,25 +34,24 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
         else { // If selling, update the displayed coin to the first entry in the portfolio
             coinChange(portfolioData[0].abbreviation)
         }}
-        // Update indexes
-        const coinChange = (newCoin) => {
-            let findIndex = liveCoinData.findIndex((coin) => coin.abbreviation == newCoin)
-            let findPortfolioIndex = portfolioData.findIndex((coin) => coin.abbreviation == newCoin)
-            setCoin(newCoin)
-            setCoinIndex(findIndex)
-            setPortfolioIndex(findPortfolioIndex)
-        }
-        // Set coin change onloadup so indexes will start off correct    
-            
+
+    // Update indexes
+    const coinChange = (newCoin) => {
+        let findIndex = liveCoinData.findIndex((coin) => coin.abbreviation == newCoin)
+        let findPortfolioIndex = portfolioData.findIndex((coin) => coin.abbreviation == newCoin)
+        setCoin(newCoin)
+        setCoinIndex(findIndex)
+        setPortfolioIndex(findPortfolioIndex)
+    }
         // data to be sent to the db
-        const payload = {
-            refName:coin,
-            name:liveCoinData[coinIndex].name,
-            logo:liveCoinData[coinIndex].logo,
-            quantity:transactionQuantity,
-            "price":price,
-            "dateTime":dateTime,
-            "type":type
+    const payload = {
+        refName:coin,
+        name:liveCoinData[coinIndex].name,
+        logo:liveCoinData[coinIndex].logo,
+        quantity:transactionQuantity,
+        "price":price,
+        "dateTime":dateTime,
+        "type":type
     }
     // Form submission
     const handleTransactionSubmit = (event) => {
@@ -70,9 +63,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
         })
         .then(res => res.json())
         .then(addTransaction())
-        
-    }
-    
+        }
     // Display available coins to buy and sell
     const CoinOptions = () => {
         // Take the names of the first 25 coins from the live feed
@@ -85,7 +76,6 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
         portfolioCoinIds  
         return coinIds.map(id => <option key={id} value = {id}> {id}</option>)
     }
-    
     // Disable the ability to sell if your portfolio is empty
     const TypeOptions = () => {
         if (portfolioData.length > 0) {
@@ -98,14 +88,12 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
             return <option value="BUY">BUY</option>
         }}
         
-        return (
+     return (
             <>
         <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
         <h2>Log a New Transaction</h2>
-
         <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
         <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>
-
         <form className="transaction-form" onSubmit={handleTransactionSubmit} >
             <select name="transactionType" id="transactionType" value={type} onChange={handleTypeChange}>
                 <TypeOptions></TypeOptions>
@@ -121,7 +109,7 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction, 
                             <p>{liveCoinData[coinIndex].name}</p>
                         </td>
                         <td>
-                        <img src={liveCoinData[coinIndex].logo} alt={liveCoinData[coinIndex].name + "logo"} className="logo" />
+                            <img src={liveCoinData[coinIndex].logo} alt={liveCoinData[coinIndex].name + "logo"} className="logo" />
                         </td>
                         <td>
                             <p>{coin}</p>

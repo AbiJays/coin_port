@@ -6,11 +6,7 @@ const Logout = (handleLogout) => {
       await handleLogout()
       navigate("/")
     }
-  
-
-    return (
-        <a href="/" onClick={handleLogoutRequest}>Logout</a>
-    )
+    return <a href="/" onClick={handleLogoutRequest}>Logout</a>
 }
 
 export default Logout;

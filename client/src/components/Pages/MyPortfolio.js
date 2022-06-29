@@ -1,5 +1,4 @@
 import React from "react";
-
 import TransactionForm from "./NewTransaction";
 import PortfolioTotal from "./pageComponents/PortfolioTotal";
 import PortfolioCoins from "./pageComponents/PortfolioCoins";
@@ -14,7 +13,6 @@ const MyPortfolio = ({liveCoinData, portfolioData}) => {
         <div className="link-container">
             <a href="/transactionform">Add Transaction</a>
         </div>
-        {/* <TransactionForm liveCoinData={liveCoinData} portfolioData={portfolioData}/> */}
         </> 
      );
 }
