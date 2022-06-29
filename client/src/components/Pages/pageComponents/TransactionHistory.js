@@ -8,7 +8,7 @@ const TransactionHistory = ({transactions}) => {
         )
     }
     return (
-        <>
+        <div className="transaction-history">
         <h2>Transaction History</h2>
         <table>
                 <thead>
@@ -22,7 +22,7 @@ const TransactionHistory = ({transactions}) => {
             </thead>
             <TransactionDisplay transactions={transactions} />
         </table>
-        </>
+        </div>
     )
 }
 export default TransactionHistory;
