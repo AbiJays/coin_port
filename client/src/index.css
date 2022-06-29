@@ -49,6 +49,7 @@ code {
   width: 80%;
   /* justify-content: center; */
   margin: auto;
+  padding-bottom: 30px;
 }
 
 .header {
@@ -57,7 +58,6 @@ code {
   align-content: center;
   padding-left: 5em;
   padding-right: 5em;
-  background-color: rgb(236, 76, 52, 0.1);
 }
 .header > ul {
   display: flex;
@@ -70,6 +70,18 @@ code {
 .header > a {
   display: flex;
   align-items: center;
+}
+
+.logout-button {
+  border: none;
+  color: rgb(60, 60, 148);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: white;
+}
+
+.logout-button:hover {
+  cursor: pointer;
 }
 
 a:link {
@@ -164,6 +176,11 @@ thead {
 .table-row {
   border-radius: 5px;
   outline: 1px solid rgb(45, 43, 87, 0.5);
+  height: 50px;
+}
+
+.table-row div > p {
+  margin: 0px;
 }
 #transactionType, #coin {
   width: 100px;
@@ -209,6 +226,7 @@ td a {
 
 
 
+
 .trend-up {
   color: green;
 }
@@ -239,6 +257,11 @@ td a {
   border: none;
   width: fit-content;
   padding: 3px;
+  font-size:16px;
+}
+
+.transaction-history {
+  margin-top: 8px;
 }
 
 
@@ -272,4 +295,19 @@ select#otherCoinSelector {
   margin-bottom: 0px;
   font-size: 14px;
   width: 160px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: rgb(45, 43, 87);
+  text-align: center;
+  vertical-align: center;
+  height: 30px;
+}
+
+.footer > p{
+  margin-top: 6px;
 }
