@@ -29,6 +29,7 @@ code {
   width: 80%;
   justify-content: center;
   margin: auto;
+  padding-bottom: 30px;
 }
 
 .header {
@@ -57,6 +58,10 @@ code {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   background-color: white;
+}
+
+.logout-button:hover {
+  cursor: pointer;
 }
 
 a:link {
@@ -151,6 +156,11 @@ thead {
 .table-row {
   border-radius: 5px;
   outline: 1px solid rgb(45, 43, 87, 0.5);
+  height: 50px;
+}
+
+.table-row div > p {
+  margin: 0px;
 }
 #transactionType, #coin {
   width: 100px;
@@ -196,6 +206,7 @@ td a {
 
 
 
+
 .trend-up {
   color: green;
 }
@@ -226,6 +237,11 @@ td a {
   border: none;
   width: fit-content;
   padding: 3px;
+  font-size:16px;
+}
+
+.transaction-history {
+  margin-top: 8px;
 }
 
 
