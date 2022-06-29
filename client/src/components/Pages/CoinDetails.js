@@ -109,7 +109,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Currency</th>
+                            <th colSpan="2">Currency</th>
                             <th>Quantity</th>
                             <th>Current Global Price (£)</th>
                             <th>Investment Value (£)</th>
