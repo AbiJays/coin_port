@@ -27,6 +27,9 @@ const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinDa
         <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} portfolioData={portfolioData} hello={hello} />} />
         <Route path="*" element={<ErrorPage />}/>
       </Routes>
+      <div className="footer">
+        <p>@2022 Copyright Coinport</p>
+      </div>
     </BrowserRouter>
   )}
 

@@ -12,9 +12,25 @@ body {
   margin: auto;
 }
 
+.footer {    
+    width: 100vw;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+
+    flex-grow: p;
+    flex-shrink: 0;
+    flex-basis: auto;
+    background-color: rgb(236, 76, 52, 0.1);
+  }
+
 #root {
   width: 100%;
-  margin: auto;
+  min-height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  /* margin: auto; */
 
 }
 
@@ -26,8 +42,13 @@ code {
 .main-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+ 
+  flex-grow: 1;
+  flex-shrink: 0;
+ 
   width: 80%;
-  justify-content: center;
+  /* justify-content: center; */
   margin: auto;
 }
 
@@ -97,7 +118,7 @@ span.brandName {
   grid-template-columns: 100px 1fr;
   grid-gap: 6px;
   max-width: 300px;
-  margin: auto;
+  /* margin: auto; */
   grid-template-areas: 
   "username input"
   "password input"

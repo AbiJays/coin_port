@@ -27,8 +27,8 @@ const [warning, setWarning] = useState("")
     }
     
         return (
-        <div >
-            <h1 id= "logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
+        <div className="main-container" >
+            <h1 id="logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
             <form id= "logInForm" action="" onSubmit={handleLoginSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input type="text" id="username" name="username" onChange={handleUsernameInput} onClick={removeWarning}/>
