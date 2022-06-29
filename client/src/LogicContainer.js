@@ -163,7 +163,9 @@ const LogicContainer = () => {
     }
     const handleLogout = () => {
         setLoginStatus(false);
+        console.log(loginStatus)
     }
+
 
     // useEffect(() => {
     //     console.log('unmounted')

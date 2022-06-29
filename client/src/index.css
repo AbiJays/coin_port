@@ -52,6 +52,14 @@ code {
   align-items: center;
 }
 
+.logout-button {
+  border: none;
+  color: rgb(60, 60, 148);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: white;
+}
+
 a:link {
   color: rgb(60, 60, 148);
   text-decoration: dashed;

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-const Logout = (handleLogout) => {
+const Logout = ({handleLogout}) => {
     let navigate = useNavigate();
-    async function handleLogoutRequest() {
-      await handleLogout()
+    function handleLogoutRequest() {
+      handleLogout()
       navigate("/")
     }
-    return <a href="/" onClick={handleLogoutRequest}>Logout</a>
+    return <button className="logout-button" onClick={handleLogoutRequest}>Logout</button>
 }
 
 export default Logout;
