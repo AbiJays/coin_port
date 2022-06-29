@@ -180,6 +180,37 @@ thead {
   height: 50px;
 }
 
+.table-row > td {
+  padding: 0px 2px;
+}
+
+.table-row > td > div {
+  display: table-cell;
+  height: 50px;
+  width: 100%;
+  margin: auto;
+  vertical-align: middle;
+  text-align: center;
+}
+.table-row > td > div:hover {
+  cursor:pointer;
+}
+
+.centered-cell {
+  padding: 0px;
+}
+
+.centered-cell > div {
+ min-width: 100%;
+ padding: 0px 15px;
+
+/* background-color: blue;
+margin: auto; */
+/* display: flex;
+align-items: center;
+align-content: center; */
+}
+
 .table-row div > p {
   margin: 0px;
 }
