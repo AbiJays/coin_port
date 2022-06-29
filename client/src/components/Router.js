@@ -25,6 +25,8 @@ const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinDa
         <Route path="/myportfolio" element={<MyPortfolio liveCoinData={liveCoinData} portfolioData={portfolioData}/>} />
         <Route path="/coin/:slug" element={<CoinDetails portfolioData={portfolioData} liveCoinData={liveCoinData}/>} />
         <Route path="/transactionform" element={<TransactionForm portfolioData={portfolioData} liveCoinData={liveCoinData} addTransaction={addTransaction} dbData={dbData} />} />
+        <Route path="/transactionform/:slug" element={<TransactionForm portfolioData={portfolioData} liveCoinData={liveCoinData} addTransaction={addTransaction} dbData={dbData} />} />
+        
         <Route path="/global" element={<GlobalCurrencies liveCoinData={liveCoinData} portfolioData={portfolioData} hello={hello} />} />
         <Route path="*" element={<ErrorPage />}/>
       </Routes>

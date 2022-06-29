@@ -1,4 +1,4 @@
-import { useParams,useLocation } from "react-router-dom";
+import { useParams,useLocation, useNavigate } from "react-router-dom";
 import GraphCode from "./pageComponents/GraphCode";
 import GraphContainer from "../../container/GraphContainer";
 import { useEffect, useState } from "react";
@@ -7,6 +7,8 @@ import TransactionHistory from "./pageComponents/TransactionHistory";
 
 
 const CoinDetails = ({portfolioData, liveCoinData}) => {
+    const navigate = useNavigate();
+
     const { slug }  = useParams()
 
     const [selectedCoinData, setSelectedCoinData] = useState({})
@@ -15,6 +17,8 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
     const selectedCoin = slug;
     // console.log('slug:', slug)
     // console.log('Portfolio data:', portfolioData)
+
+
 
     useEffect(()=> {
         getCoinData();
@@ -80,6 +84,11 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
         }
         
         if (selectedCoinData) {
+
+            function goToForm() {
+
+                navigate(`/transactionform/${slug}`)
+            }
             
             console.log('portfolio data:', portfolioData)
             console.log('this is the data:', selectedCoinData)
@@ -140,7 +149,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 </table>
                 }
 
-                <a href={"http://localhost:3000/transactionform"}><p>Click to add a transaction for {coinName}.</p></a>
+                <button onClick={goToForm}>Click to add a transaction for {coinName}.</button>
 
                 <TransactionHistory transactions={coinTransactions} coinName={coinName}></TransactionHistory>
             </>

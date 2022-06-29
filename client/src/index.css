@@ -22,18 +22,14 @@ code {
   margin-left: 10px;
   margin-right: 10px;
 }
-
-
 .header > ul {
   display: flex;
   list-style: none;
   padding-left: 0px;
 }
-
 .header > ul li {
   padding-right: 10px;
 }
-
 .header > a {
   display: flex;
   align-items: center;
@@ -44,7 +40,6 @@ a:link {
   text-decoration: dashed;
   font-weight: 200;
 }
-
 a:visited {
   color: rgb(25, 25, 88);
   font-size: small;
@@ -57,6 +52,9 @@ a:visited {
   justify-content: space-between;
   width: 100%;
 }
+.portfolio-total {
+  color: rgb(236, 76, 52);
+}
 
 .logo {
   height: 20px;
@@ -68,11 +66,9 @@ a:visited {
   text-align: center;
   text-transform: uppercase;
 }
-
 span.brandName {
   color: rgb(236, 76, 52);
 }
-
 #logInForm {
   display: grid;
   grid-template-columns: 100px 1fr;
@@ -94,7 +90,6 @@ span.brandName {
   margin-left: 12px;
   background: rgb(216, 214, 205);
 }
-
 #login-warning-text {
   max-width: 300px;
   text-align: center;
@@ -104,9 +99,6 @@ span.brandName {
   font-size: 14px;
 }
 
-.portfolio-total {
-  color: rgb(236, 76, 52);
-}
 
 #globalH1 {
   color: rgb(45, 43, 87);
@@ -135,7 +127,6 @@ td a {
 .trend-up {
   color: green;
 }
-
 .trend-down {
   color: red;
 }
@@ -147,13 +138,11 @@ td a {
   width: fit-content;
   background-color: rgb(255, 255, 255);
 }
-
 .link-container > a {
   color: rgb(236, 76, 52);
   text-decoration: none;
   padding: 3px;
 }
-
 .link-container > a:hover {
   border: 1px rgb(45, 43, 87) solid;
   width: fit-content;

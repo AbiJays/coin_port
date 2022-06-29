@@ -13,7 +13,7 @@ const LogicContainer = () => {
     // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
-    const [loginStatus, setLoginStatus] = useState()
+    const [loginStatus, setLoginStatus] = useState(true)
     const [usernameAttempt, setUsernameAttempt] = useState("");
     const [passwordAttempt, setPasswordAttempt] = useState("");
     const loginDetails = {
