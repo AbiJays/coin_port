@@ -6,8 +6,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  width: 100%;
+  margin: auto;
+}
+
+#root {
+  width: 100%;
+  margin: auto;
+
 }
 
 code {
@@ -15,12 +23,21 @@ code {
     monospace;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  margin: auto;
+}
+
 .header {
   display:flex;
   justify-content: space-between;
   align-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: rgb(236, 76, 52, 0.1);
 }
 .header > ul {
   display: flex;
@@ -61,6 +78,11 @@ a:visited {
   height: 20px;
   width: auto;
 }
+
+#transaction-logo {
+  width: fit-content;
+}
+
 
 #logInHeader {
   color: rgb(45, 43, 87);
@@ -123,10 +145,38 @@ thead {
   border-radius: 5px;
   outline: 1px solid rgb(45, 43, 87, 0.5);
 }
+#transactionType, #coin {
+  width: 100px;
+}
+
 .transaction-row {
   border-radius: 5px;
   outline: 1px solid rgba(45, 43, 87, 0.5);
 }
+
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 0.5px solid rgb(45, 43, 87, 0.2);
+  padding: 10px;
+  max-width: 100%;
+}
+
+.transaction-form * {
+  max-width: 80px;
+  margin: 5px;
+}
+
+.transaction-submit {
+  min-width: 120px;
+}
+
+#quantity, #MAX {
+  width: 80px;
+}
+
 td#globalCoinName {
   width: 20px;
 }
@@ -158,10 +208,20 @@ td a {
   text-decoration: none;
   padding: 3px;
 }
-.link-container > a:hover {
+.link-container > a:hover, .new-transaction-button:hover {
   border: 1px rgb(45, 43, 87) solid;
   width: fit-content;
 }
+
+.new-transaction-button {
+  color: rgb(236, 76, 52);
+  background-color: white;
+  border: none;
+  width: fit-content;
+  padding: 3px;
+}
+
+
 
 tbody {
   text-align: center;
@@ -186,4 +246,10 @@ select#otherCoinSelector {
 .autofill-container {
   width: 150px;
   height: auto;
+}
+
+.autofill-container p {
+  margin-bottom: 0px;
+  font-size: 14px;
+  width: 160px;
 }

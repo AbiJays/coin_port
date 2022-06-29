@@ -89,57 +89,67 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
         }}
         
      return (
-            <>
-        <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
-        <h2>Log a New Transaction</h2>
-        <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
-        <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>
-        <form className="transaction-form" onSubmit={handleTransactionSubmit} >
-            <select name="transactionType" id="transactionType" value={type} onChange={handleTypeChange}>
-                <TypeOptions></TypeOptions>
-            </select>
-            <select name="coin" id="coin" value={coin} onChange={handleCoinChange}>
-                <CoinOptions ></CoinOptions>
-            </select>
-            <input type="submit" value="Post" />
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p>{liveCoinData[coinIndex].name}</p>
-                        </td>
-                        <td>
-                            <img src={liveCoinData[coinIndex].logo} alt={liveCoinData[coinIndex].name + "logo"} className="logo" />
-                        </td>
-                        <td>
-                            <p>{coin}</p>
-                        </td>
-                        <td>
-                            <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {type === 'BUY' ? null : portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
-                        </td>
-                        {   
-                            type === 'SELL' &&  
+        <div className="main-container">
+            <PortfolioTotal portfolioData={portfolioData}></PortfolioTotal>
+            <h1>Log a New Transaction</h1>
+            <p>You have in {portfolioIndex===(-1)? 0 : portfolioData[portfolioIndex].portfolioQuantity} {liveCoinData[coinIndex].name} in your portfolio{portfolioIndex===(-1)? "" : ` worth £${(portfolioData[portfolioIndex].investmentValue)}`} </p>
+            <p>The current price is: £{parseInt(liveCoinData[coinIndex].price).toFixed(2)}</p>
+            <form className="transaction-form" onSubmit={handleTransactionSubmit} >
+                <select name="transactionType" id="transactionType" value={type} onChange={handleTypeChange}>
+                    <TypeOptions></TypeOptions>
+                </select>
+                <select name="coin" id="coin" value={coin} onChange={handleCoinChange}>
+                    <CoinOptions ></CoinOptions>
+                </select>
+                <table>
+                    <tbody>
+                        <tr>
                             <td>
-                                <button name="MAX" id="MAX" onClick={handleMaxClick}>Max</button>
+                                <p>{liveCoinData[coinIndex].name}</p>
                             </td>
-                        }
-                        <td>
-                            <CurrencyInput id="price" placeholder="Price" decimalsLimit={2}
-                             value={price} onValueChange={handlePriceChange} required/>
-                        </td>
-                        <td>
-                            <CurrencyInput id="totalValue" placeholder="totalValue" decimalsLimit={2} value={isNaN(transactionQuantity*price)? 0 : transactionQuantity*price} readOnly/>
-                        </td>
-                        <td>
-                            <input type="datetime-local" id="date" value={dateTime} onChange={handleDateTimeChange} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+                            <td id="transaction-logo">
+                                <img src={liveCoinData[coinIndex].logo} alt={liveCoinData[coinIndex].name + "logo"} className="logo" />
+                            </td>
+                            <td>
+                                <p>{coin}</p>
+                            </td>
+                            <td>
+                                <input type="number" name="quantity" id="quantity" placeholder="Quantity" min = {0} max = {type === 'BUY' ? null : portfolioData[portfolioIndex].portfolioQuantity} value={transactionQuantity} onChange = {handleTransactionQuantityChange} required/>
+                            </td>
+                            {   
+                                type === 'SELL' &&  
+                                <td>
+                                    <button name="MAX" id="MAX" onClick={handleMaxClick}>Max</button>
+                                </td>
+                            }
+                            <td>
+                                <CurrencyInput id="price" placeholder="Price" decimalsLimit={2}
+                                value={price} onValueChange={handlePriceChange} required/>
+                            </td>
+                            <td>
+                                <input type="datetime-local" id="date" value={dateTime} onChange={handleDateTimeChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Transaction value:</td>
 
-        <TransactionHistory transactions={dbData}/>
-        </>
+                            <td>
+                                <CurrencyInput id="totalValue" placeholder="totalValue" decimalsLimit={2} value={isNaN(transactionQuantity*price)? 0 : transactionQuantity*price} readOnly/>
+                            </td>
+                            <td></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <input type="submit" value="Log transaction" className="transaction-submit"/>
+            </form>
+
+            <TransactionHistory transactions={dbData}/>
+        </div>
     )}
 
 export default TransactionForm

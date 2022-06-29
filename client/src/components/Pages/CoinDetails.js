@@ -4,6 +4,7 @@ import GraphContainer from "../../container/GraphContainer";
 import SingleCoinDisplay from "./pageComponents/SingleCoinDisplay";
 import TransactionHistory from "./pageComponents/TransactionHistory";
 import AutofillSearch from "./pageComponents/AutofillSearch";
+import PortfolioTotal from "./pageComponents/PortfolioTotal";
 
 const CoinDetails = ({portfolioData, liveCoinData}) => {
     
@@ -86,17 +87,20 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 navigate(`/coin/${coin.abbreviation}`)
             }
             return (
-                <>
+            <div className="main-container">
+                <PortfolioTotal portfolioData={portfolioData}/>
                 <h1>{coinName} </h1>
                 <div>
                     <div className="coin-detail-title-container">
                         <h4>{coinName}'s current market behaviour:</h4>
-                        <select id="otherCoinSelector" onChange={handleCoinSubmit}>
-                            <option >View a Different Coin:</option>
-                            {coinOptions}
-                        </select>
-                        <div className="autofill-container">
-                        <AutofillSearch liveCoinData={liveCoinData} getSearchResult={getSearchResult}/>
+                        <div>
+                            <select id="otherCoinSelector" onChange={handleCoinSubmit}>
+                                <option >View a Different Coin:</option>
+                                {coinOptions}
+                            </select>
+                            <div className="autofill-container">
+                            <AutofillSearch liveCoinData={liveCoinData} getSearchResult={getSearchResult}/>
+                        </div>
                         </div>
                     </div>
 
@@ -125,10 +129,10 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
                 </table>
                 }
 
-                <button onClick={goToForm}>Click to add a transaction for {coinName}.</button>
+                <button className="new-transaction-button" onClick={goToForm}>Click to add a transaction for {coinName}.</button>
 
                 <TransactionHistory transactions={coinTransactions} coinName={coinName}></TransactionHistory>
-            </>
+            </div>
             )
         }}
  

@@ -51,18 +51,20 @@ const AutofillSearch = ({getCoinByName, liveCoinData, getSearchResult}) => {
                   <div id="autofillSearch">
                     <p>Or search for a coin here:</p>
                   </div>
-                  <ReactSearchAutocomplete
-                      inputValue=''
-                      items={searchableCoins}
-                      onSearch={handleOnSearch}
-                      onHover={handleOnHover}
-                      onSelect={handleOnSelect}
-                      onFocus={handleOnFocus}
-                      onClear={handleOnClear}
-                      clearOnSelect={true}
-                      styling={{ zIndex: 4 }} // To display it on top of the search box below
-                    //   autoFocus
-                      />
+                  <div className="search-container">
+                    <ReactSearchAutocomplete
+                        inputValue=''
+                        items={searchableCoins}
+                        onSearch={handleOnSearch}
+                        onHover={handleOnHover}
+                        onSelect={handleOnSelect}
+                        onFocus={handleOnFocus}
+                        onClear={handleOnClear}
+                        clearOnSelect={true}
+                        styling={{ zIndex: 4 }} // To display it on top of the search box below
+                        //   autoFocus
+                        />
+                    </div>
                   <div style={{ marginTop: 0 }}></div>
               </>
           )

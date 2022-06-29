@@ -41,8 +41,8 @@ const GraphCode = ({ data /* see data tab */ }) => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Close Value',
-            legendOffset: -40,
+            legend: 'Close Value (£)',
+            legendOffset: -50,
             legendPosition: 'middle'
         }}
         pointSize={10}
