@@ -13,7 +13,7 @@ const LogicContainer = () => {
     // Data fetched from the backend database
     const [dbData, setDbData] = useState([]);
     const [portfolioData, setPortfolioData] = useState([]);
-    const [loginStatus, setLoginStatus] = useState(true)
+    const [loginStatus, setLoginStatus] = useState(true); //proof of concept
     const [usernameAttempt, setUsernameAttempt] = useState("");
     const [passwordAttempt, setPasswordAttempt] = useState("");
     const loginDetails = {
@@ -43,7 +43,6 @@ const LogicContainer = () => {
 
         let liveData = []
 
-        // console.log("Getting Live data")
         return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {

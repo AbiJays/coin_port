@@ -11,7 +11,6 @@ const [warning, setWarning] = useState("")
     }
 
     const removeWarning = () => setWarning("")
-    
     const handlePasswordInput = (e) => getPasswordAttempt(e)
 
     async function handleLoginSubmit(e) {
