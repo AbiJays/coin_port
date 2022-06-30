@@ -55,7 +55,7 @@ const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
         
         // const selectedCoin = coinDataDaily.find(coin => coin["Meta Data"]["2. Digital Currency Code"] == slug[Object.keys(slug)[0]])
         // console.log('selectedCoinData:', selectedCoinData)
-        const listOfDates = Object.keys(selectedCoinData["Time Series (Digital Currency Daily)"])
+        const listOfDates = (Object.keys(selectedCoinData["Time Series (Digital Currency Daily)"])).reverse()
 
         
         const data = listOfDates.map((date) => {
@@ -71,7 +71,7 @@ const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
         const formattedCloseData = [{
             "id": id,
             "color": color,
-            "data": data.slice(0,9)
+            "data": data.slice(-9)
         }]
 
       
