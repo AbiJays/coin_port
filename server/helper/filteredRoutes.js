@@ -4,7 +4,7 @@ const filteredRoutes = function (collection) {
 
     const router = express.Router();
 
-// Show distinct coins
+    // Show distinct coins
     router.get('/', (req, res) => {
         collection
             .distinct("Coin")
@@ -16,7 +16,7 @@ const filteredRoutes = function (collection) {
         });
     });
 
-// Filter by coin
+    // Filter by coin
     router.get('/:coin', (req, res) => {
         const coin = req.params.coin;
         collection
@@ -28,7 +28,7 @@ const filteredRoutes = function (collection) {
                 res.status(500);
                 res.json({ status: 500, error: err });
             });
-});
+    });
 
     return router;
 
