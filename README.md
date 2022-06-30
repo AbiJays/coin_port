@@ -1,19 +1,31 @@
-# Shares Portfolio Application
+# Crypto Currency Portfolio
 
-A local trader has come to you with a portfolio of shares. She wants to be able to analyse it more effectively. She has a small sample data set to give you and would like you to build a Minimum Viable Product that uses the data to display her portfolio so that she can make better decisions.
+An internet person has brought you their CryptoCurrency portfolio and an idea. With the aim to analyse their shares more effectively, you have been tasked to come up with an application to display their investments live.
+
 
 ## MVP
 
 A user should be able to:
 
-- view total current value.
-- view individual and total performance trends.
-- retrieve a list of share prices from an external API and allow the user to add shares to her portfolio.
-- View a chart of the current values in her portfolio.
+- View  the value of individual investments and the total GBP. 
+- Add new currencies to portfolio via global view and portfolio view through.
+- Increase/Decrease investments by adding transactions. Delete/Update with prompt.
+- View all coins that are available to purchase through the app.
+- For each coin, access the graph for global trends combined with Portfolio summary and transaction history for that coin.
 
-## Example Extensions
 
-- Speculation based on trends and further financial modelling using projections.
+## Achieved Extensions
+
+- Log in with hard-coded password and timeout
+- For each coin, access the graph for global trends combined with Portfolio summary and transaction history for that coin.
+
+## Further Extensions
+
+- Add extra timescales to global trends( 1hour, 1 week, 1 month,1 year?)
+- Use historic prices and our stored transaction dates to display the value of our portfolio over time.
+- Toggle between GBP or USD
+- Delete/Update with prompt.
+
 
 ## API, Libraries, Resources
 
