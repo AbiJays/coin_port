@@ -28,13 +28,5 @@ db.transactions.insertMany([
     "price": "928.67",  
     "dateTime": new Date (),  
     "type": "BUY"
-  },
-  {
-    "refName": "SHIB",  "name": "Shiba Inu",  
-    "logo": "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/SHIB.png",  
-    "quantity": "3",  
-    "price": "0.05",  
-    "dateTime": new Date (),  
-    "type": "BUY"
   }
  ])
