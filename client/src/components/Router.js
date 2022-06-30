@@ -18,7 +18,7 @@ const CoinRouter = ({hello, loginStatus, coinDataDaily,portfolioData, liveCoinDa
         <NavBar />
         <Logout handleLogout={handleLogout} />
         </div>: <div className='header'> <p></p></div>
-}
+      }
     
       <Routes>
         <Route exact path="/" element ={<LogIn portfolioData={portfolioData} liveCoinData={liveCoinData} getUsernameAttempt={getUsernameAttempt} getPasswordAttempt={getPasswordAttempt} handleLoginAttempt={handleLoginAttempt}/>} />

@@ -118,14 +118,13 @@ span.brandName {
   "footer footer";
 }
 #logInSubmit {
-  background: lightgrey;
   padding: 0.7em;
   border: 0;
   grid-area: footer;
   width: 100px;
   justify-self: center;
   margin-left: 12px;
-  background: rgb(216, 214, 205);
+  background: rgb(243, 242, 235);
 }
 #login-warning-text {
   max-width: 300px;

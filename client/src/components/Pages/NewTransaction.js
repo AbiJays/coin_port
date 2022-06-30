@@ -152,4 +152,4 @@ const TransactionForm = ({liveCoinData , portfolioData, dbData, addTransaction})
         </div>
     )}
 
-export default TransactionForm
+export default TransactionForm;

@@ -6,7 +6,6 @@ const LogIn = ({getUsernameAttempt, getPasswordAttempt, handleLoginAttempt}) => 
 const [warning, setWarning] = useState("")
     let navigate=useNavigate();
     const handleUsernameInput = (e) => {
-        // console.log('username', e.target.value)
         getUsernameAttempt(e);
         setWarning("")
     }
@@ -26,7 +25,7 @@ const [warning, setWarning] = useState("")
         e.target.reset()
     }
     
-        return (
+    return (
         <div className="main-container" >
             <h1 id="logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
             <form id= "logInForm" action="" onSubmit={handleLoginSubmit}>

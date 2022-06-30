@@ -9,16 +9,16 @@ const [warning, setWarning] = useState("")
         console.log('username', e.target.value)
         getUsernameAttempt(e);
         setWarning("")
-    }
+    };
 
     const removeWarning = () => {
         setWarning("")
-    }
+    };
     
     const handlePasswordInput = (e) => {
         console.log('password', e)
         getPasswordAttempt(e)
-    }
+    };
 
     async function handleLoginSubmit(e) {
         e.preventDefault()
@@ -31,26 +31,22 @@ const [warning, setWarning] = useState("")
             navigate("/myportfolio")
         }
         e.target.reset()
-
-    }
+    };
     
         return (
         <>
+            <div >
+                <h1 id= "logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
+                <form id= "logInForm" action="" onSubmit={handleLoginSubmit}>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" id="username" name="username" onChange={handleUsernameInput} onClick={removeWarning}/>
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" name="password" onChange={handlePasswordInput}/>
+                    <input type="submit" id="logInSubmit" value="Log in"/>
+                </form>
 
-
-
-        <div >
-            <h1 id= "logInHeader">Welcome to <span className="brandName">CoinPort</span></h1>
-            <form id= "logInForm" action="" onSubmit={handleLoginSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" onChange={handleUsernameInput} onClick={removeWarning}/>
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" onChange={handlePasswordInput}/>
-                <input type="submit" id="logInSubmit" value="Log in"/>
-            </form>
-
-            <p id="login-warning-text">{warning}</p> 
-        </div>
+                <p id="login-warning-text">{warning}</p> 
+            </div>
         </>
     );
 }

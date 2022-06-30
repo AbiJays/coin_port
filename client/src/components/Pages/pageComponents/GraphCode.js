@@ -1,18 +1,10 @@
 // install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/line
+// npm add @nivo/core @nivo/line
 import { ResponsiveLine } from '@nivo/line'
 
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
 const GraphCode = ({ data /* see data tab */ }) => {
-    // const graphs = data.map(coin => {
-    //     console.log('GraphCode coin', coin)
         return (
             
-       
     <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -77,10 +69,7 @@ const GraphCode = ({ data /* see data tab */ }) => {
                 ]
             }
         ]}
-    />
-    )
-// })
-// return graphs;
+    />)
 }
 
 export default GraphCode;
