@@ -23,10 +23,11 @@ const GraphContainer = ({slug, selectedCoin, selectedCoinData}) => {
 
         const id = selectedCoinData["Meta Data"]["3. Digital Currency Name"];
         const color = "hsl(240, 20%, 50%)";
+        
         const formattedCloseData = [{
             "id": id,
             "color": color,
-            "data": data.slice(0,9)
+            "data": data.slice(0,9).reverse()
         }]
 
         return (

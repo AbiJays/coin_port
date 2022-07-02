@@ -28,6 +28,7 @@ const CoinDetails = ({portfolioData, liveCoinData}) => {
         })
     }
 
+
     const getCoinPortfolioData = () => {
         fetch(`http://localhost:5000/api/coins/${selectedCoin}`)
             .then(res => res.json())
