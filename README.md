@@ -19,6 +19,10 @@ A user should be able to:
 - Log in with hard-coded password and timeout
 - For each coin, access the graph for global trends combined with Portfolio summary and transaction history for that coin.
 
+## Next Steps
+
+- The first thing I would do with this code would be to tidy it up. The structure is lacking and does not make a lot of sense- at all. 
+
 ## Further Extensions
 
 - Add extra timescales to global trends( 1hour, 1 week, 1 month,1 year?)
@@ -29,5 +33,32 @@ A user should be able to:
 
 ## API, Libraries, Resources
 
-- https://www.alphavantage.co/ (Requires sign up)
-- https://www.highcharts.com/ HighCharts is an open-source library for rendering responsive charts.
+- https://www.alphavantage.co/ API for historical graph
+- https://nivo.rocks/line/ The beautiful line graph with all of its built in functionality
+
+## Installation
+To demo CoinPort application first you'll need these:
+
+1. Node.js
+2. MongoDB
+3. A copy of this repository
+
+With the previous achieved follow these steps to run CoinPort
+
+1. Install package.json dependencies by navigating to the client and running:
+```
+npm i
+```
+2. Navigate to server directory and run: (You can skip this step if you wish to add your own seed data via the application itself but to save time and see the full functionality it is recommended.)
+```
+npm run seed
+```
+3. To start the server navigate to server directory and run
+```
+npm start
+```
+4. To start the client navigate to client directory and run:
+```
+npm start
+```
+5. Behold CoinPort on http://localhost:3000
