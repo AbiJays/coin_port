@@ -30,7 +30,7 @@ const LogicContainer = () => {
    
 
    // Refresh price update interval in milliseconds
-    const PriceInterval = 60000  
+    const PriceInterval = 15000  
     useEffect(() => {
         const id = setInterval(() => getLiveCoinData(), PriceInterval)
         return () => clearInterval(id)
@@ -43,12 +43,10 @@ const LogicContainer = () => {
 
         let liveData = []
 
-        // console.log("Getting Live data")
-        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
+        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=f7eb2c856bc0090a765a58477fb21a31db6146ba&convert=GBP`)        
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
-
-
+        
             let liveCoinObject = {
                 logo:coin.logo_url,
                 name:coin.name,
@@ -72,7 +70,7 @@ const LogicContainer = () => {
         let collatedCoinList = []
         let coinDetails = []
 
-        // console.log("Getting Portfolio data")
+        console.log("Getting Portfolio data")
         fetch(`http://localhost:5000/api/transactions`)
             .then(res => res.json())
             .then(transactions => transactions.forEach( transaction => {
