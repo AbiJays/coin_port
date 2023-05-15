@@ -7,7 +7,7 @@ An internet person has brought you their CryptoCurrency portfolio and an idea. W
 
 A user should be able to:
 
-- View  the value of individual investments and the total GBP. 
+- View the value of individual investments and the total GBP. 
 - Add new currencies to portfolio via global view and portfolio view through.
 - Increase/Decrease investments by adding transactions. Delete/Update with prompt.
 - View all coins that are available to purchase through the app.
@@ -61,4 +61,6 @@ npm start
 ```
 npm start
 ```
-5. Behold CoinPort on http://localhost:3000
+<img width="1723" alt="Screenshot 2023-05-15 at 17 02 47" src="https://github.com/AbiJays/coin_port/assets/99146064/ade79c84-7710-4172-a3d5-01a876b4dc44">
+
+5. Behold CoinPort http://localhost:3000
