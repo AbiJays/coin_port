@@ -43,7 +43,7 @@ const LogicContainer = () => {
 
         let liveData = []
 
-        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`)        
+        return fetch(`https://api.nomics.com/v1/currencies/ticker?key=02a98957d8cbe4cebd6d468860b690bac7baeb5a&convert=GBP`) //https://api.minerstat.com/v2/coins
         .then(res=>res.json())
         .then(coins => coins.forEach(coin => {
 
