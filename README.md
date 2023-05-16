@@ -2,6 +2,8 @@
 
 An internet person has brought you their CryptoCurrency portfolio and an idea. With the aim to analyse their shares more effectively, you have been tasked to come up with an application to display their investments live.
 
+EDIT:
+As of checking 16 May 2023 nomics.com no longer exists "Unfortunately, we are sunsetting this website effective today" so I need to find another API in order to display this information.
 
 ## MVP
 
